@@ -1,0 +1,20 @@
+10. Create Mail-Enabled Security Group in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Groups
+Click on + (Add)
+Select Mail-Enabled Security
+Enter the group name and alias
+Add members to the group
+Click Save
+
+Using Exchange Management Shell
+
+New-DistributionGroup -Name "HR_Security" -Alias "hr_security" -Type Security -MemberJoinRestriction Open -MemberDepartRestriction Open
+
+Verify the group
+
+Get-DistributionGroup "HR_Security" | fl Name,Alias,Members,RecipientType

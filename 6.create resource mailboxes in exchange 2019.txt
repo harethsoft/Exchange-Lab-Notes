@@ -1,0 +1,26 @@
+
+6. Create Resource Mailboxes in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Resources
+Click on + (Add)
+Select Room Mailbox or Equipment Mailbox
+Enter details Name Alias
+Click Save
+
+Using Exchange Management Shell
+
+New-Mailbox -Room -Name "Room01" -Alias "Room01"
+New-Mailbox -Equipment -Name "Equipment01" -Alias "Equipment01"
+
+Verify mailbox
+
+Get-Mailbox Room01
+Get-Mailbox Equipment01
+
+---
+
+

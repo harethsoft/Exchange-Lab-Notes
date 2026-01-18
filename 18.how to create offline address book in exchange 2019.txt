@@ -1,0 +1,21 @@
+18. how to create offline address book in exchange 2019
+
+Using Exchange Admin Center
+
+.....................
+
+Using Exchange Management Shell
+Get-OfflineAddressBook
+Get-GlobalAddressList
+New-OfflineAddressBook -name "harethsoft OAB" -AddressLists "harethsoft GAL" -GlobalWebDistributionEnabled $true
+Get-OfflineAddressBook | fl Name,AddressLists
+
+
+then we use exchange admin center
+to assign newoffline address book to the mailbox database
+click on servers section 
+click on databases tab
+select the mail box database 
+click on edit icon 
+on left on side click on client setting 
+click on offline address book (browse) the select offline address book

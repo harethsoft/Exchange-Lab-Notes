@@ -1,0 +1,20 @@
+11. Create Shared Mailbox in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on shared tab
+Click on + (Add)
+
+Enter display name and email address
+Click Save
+
+Using Exchange Management Shell
+
+New-Mailbox -Shared -Name "Support" -Alias "support" -PrimarySmtpAddress "support@harethsoft.com"
+
+
+Verify the shared mailbox
+
+Get-Mailbox "Support" | fl Name,Alias,PrimarySmtpAddress,RecipientTypeDetails

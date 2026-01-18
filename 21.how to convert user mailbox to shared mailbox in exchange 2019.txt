@@ -1,0 +1,9 @@
+21. how to convert user mailbox to shared mailbox in exchange 2019
+
+Using Exchange Admin Center
+
+..............
+
+Using Exchange Management Shell
+Set-Mailbox -Identity ali.it2 -Type Shared
+Get-Mailbox ali.it2 | fl Name,RecipientTypeDetails

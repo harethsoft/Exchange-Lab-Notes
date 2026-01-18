@@ -1,0 +1,28 @@
+5.create user mailbox in exchange server 2019
+
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Mailboxes
+Click on + (Add)
+Select User mailbox
+Click New user
+Enter user details (username, display name, password)
+Select mailbox database if required
+Click Save
+
+---
+
+Using Exchange Management Shell
+
+New-Mailbox -Name "User01" `
+-UserPrincipalName user01@harethsoft.com `
+-Alias user01 `
+-OrganizationalUnit "Users" `
+-Password (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force)
+
+Verify mailbox
+
+Get-Mailbox user01

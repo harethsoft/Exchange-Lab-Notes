@@ -1,0 +1,34 @@
+1. Installing Prerequisites for Microsoft Exchange Server 2019
+
+Install required software
+
+Install Microsoft .NET Framework 4.8.1
+NDP481-x86-x64-AllOS-ENU
+
+Install Microsoft Visual C++ Redistributable x64
+vcredist_x64
+
+Install Unified Communications Managed API
+UcmaRuntimeSetup
+
+Install Windows features using PowerShell
+
+Open Windows PowerShell as Administrator
+
+Install-WindowsFeature Server-Media-Foundation NET-Framework-45-Features RPC-over-HTTP-proxy RSAT-Clustering RSAT-Clustering-CmdInterface RSAT-Clustering-Mgmt RSAT-Clustering-PowerShell WAS-Process-Model Web-Asp-Net45 Web-Basic-Auth Web-Client-Auth Web-Digest-Auth Web-Dir-Browsing Web-Dyn-Compression Web-Http-Errors Web-Http-Logging Web-Http-Redirect Web-Http-Tracing Web-ISAPI-Ext Web-ISAPI-Filter Web-Lgcy-Mgmt-Console Web-Metabase Web-Mgmt-Console Web-Mgmt-Service Web-Net-Ext45 Web-Request-Monitor Web-Server Web-Stat-Compression Web-Static-Content Web-Windows-Auth Web-WMI Windows-Identity-Foundation RSAT-ADDS
+
+Prepare Active Directory
+
+Mount Exchange Server 2019 ISO
+
+Prepare schema
+
+F:\Setup.exe /PrepareSchema /IAcceptExchangeServerLicenseTerms_DiagnosticDataON
+
+Prepare Active Directory
+
+F:\Setup.exe /PrepareAD /OrganizationName:"harethsoft" /IAcceptExchangeServerLicenseTerms_DiagnosticDataON
+
+Prepare all domains
+
+F:\Setup.exe /PrepareAllDomains /IAcceptExchangeServerLicenseTerms_DiagnosticDataON

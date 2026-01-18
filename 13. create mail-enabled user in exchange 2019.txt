@@ -1,0 +1,21 @@
+13. create mail-enabled user in exchange 2019
+
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on contact tab
+Click on +
+
+select mail user
+Click Save
+
+13. Create Mail-Enabled User in Exchange 2019
+
+Using Exchange Management Shell
+
+New-MailUser -Name "Ali Ali" -UserPrincipalName "ali.ali@harethsoft.com" -Alias "ali.ali" -ExternalEmailAddress "ali@ext.com" -Password (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force)
+
+
+Get-MailUser ali.ali | fl Name,Alias,ExternalEmailAddress,UserPrincipalName

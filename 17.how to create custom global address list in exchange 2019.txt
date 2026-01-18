@@ -1,0 +1,24 @@
+17. how to create custom global address list in exchange 2019
+
+Using Exchange Admin Center
+
+....................
+
+
+
+Using Exchange Management Shell
+New-GlobalAddressList -Name "harethsoft GAL" -IncludedRecipients "AllRecipients" -ConditionalCompany "harethsoft"
+Update-GlobalAddressList -Identity "harethsoft GAL"
+Get-GlobalAddressList | fl Name,RecipientFilter
+
+
+
+
+
+add company value
+Get-ADUser -SearchBase "OU=harethcompany,DC=harethsoft2,DC=com" -Filter * |
+ForEach-Object { Set-ADUser $_ -Company "harethsoft" }
+
+Get-ADUser -Filter {company -eq "harethsoft"} | Select Name,UserPrincipalName,Company
+
+

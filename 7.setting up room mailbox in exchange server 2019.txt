@@ -1,0 +1,20 @@
+7.setting up room mailbox in exchange server 2019
+
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Resources
+Select the Room Mailbox you want to configure
+Click on Edit icon
+Configure mailbox settings like Scheduling Options Booking Delegates Automate Processing
+Click Save
+
+Using Exchange Management Shell
+
+Set-Mailbox -Identity "Room01" -ResourceCapacity 10 -BookingWindowInDay 180 -AutomateProcessing AutoAccept
+
+Verify settings
+
+Get-Mailbox "Room01" | fl Name,ResourceCapacity,AutomateProcessing,BookingWindowInDay

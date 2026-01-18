@@ -1,0 +1,18 @@
+15. Configure Accepted Domain in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Mail Flow
+Click on Accepted Domains tab
+Click +
+Enter Name
+Enter Domain Name harethsoft2.com
+Select Domain Type Authoritative
+Click Save
+
+Using Exchange Management Shell
+
+Get-AcceptedDomain
+New-AcceptedDomain -Name "Harethsoft3" -DomainName "harethsoft3.com" -DomainType Authoritative
+Get-AcceptedDomain | fl Name,DomainName,DomainType

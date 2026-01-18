@@ -1,0 +1,31 @@
+
+
+4. How to Create a New Mailbox Database in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Servers
+Click on Databases
+Click on + (Add)
+Enter database name (db02)
+Select mailbox server (exchange)
+Specify database file path
+Specify log file path
+Click Save
+
+---
+
+Using Exchange Management Shell
+
+New-MailboxDatabase -Name db02 -Server exchange -EdbFilePath D:\db02\db02.edb -LogFolderPath D:\db02
+
+Mount-Database -Identity db02
+
+Get-MailboxDatabase | fl Name,Server,EdbFilePath,LogFolderPath
+
+then go to services
+find service
+microsoft exchange information store
+and restart it
+

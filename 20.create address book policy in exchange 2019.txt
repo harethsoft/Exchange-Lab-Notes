@@ -1,0 +1,49 @@
+20. create address book policy in exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Organization
+Click on Address Lists
+Click +
+Enter name for the user address list
+Click Save
+
+Click + again
+Create room list
+Click Save
+
+Now the user address list and room list are created and ready to be used in an address book policy
+
+Using Exchange Management Shell
+
+Get-GlobalAddressList
+Get-OfflineAddressBook
+
+GAL name harethsoft GAL
+OAB name harethsoft OAB
+Address list name harethsoft-users
+Room list name harethsoft-roomlist
+
+New-AddressBookPolicy -Name "harethsoft ABP" -GlobalAddressList "harethsoft GAL" -RoomList "harethsoft-roomlist" -AddressLists "harethsoft-users" -OfflineAddressBook "harethsoft OAB"
+Get-AddressBookPolicy "harethsoft ABP"
+
+
+Assign Address Book Policy to Mailboxes
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Mailboxes
+Select the mailbox
+Click Edit
+Go to Mailbox Features
+Under Address Book Policy
+Select the created policy harethsoft ABP
+Click Save
+
+Using Exchange Management Shell
+
+Set-Mailbox -Identity ali.ali -AddressBookPolicy "harethsoft ABP"
+Get-Mailbox ali.ali | fl Name,AddressBookPolicy

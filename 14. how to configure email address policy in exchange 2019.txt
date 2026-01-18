@@ -1,0 +1,24 @@
+14. Configure Email Address Policy in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Mail Flow
+Click on Email Address Policies tab
+Click + to create a new policy
+Provide a name for the policy
+Specify the conditions for recipients the policy will apply to
+Define the email address format (for example: [firstname.lastname@domain.com](mailto:firstname.lastname@domain.com))
+Select which address should be primary
+Click Save
+Apply the policy to update recipients
+
+---
+
+Using Exchange Management Shell
+New-EmailAddressPolicy -Name "DefaultPolicy" -IncludedRecipients AllRecipients -EnabledPrimarySMTPAddressTemplate "%g.%s@harethsoft2.com"
+
+
+Update-EmailAddressPolicy "DefaultPolicy"
+
+Get-EmailAddressPolicy | fl Name,EnabledPrimarySMTPAddressTemplate,IncludedRecipients

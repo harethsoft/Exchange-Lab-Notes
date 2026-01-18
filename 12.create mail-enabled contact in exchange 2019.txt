@@ -1,0 +1,18 @@
+12. Create Mail-Enabled Contact in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Contacts
+Click +
+Select Mail contact
+Enter Name, External email address, Alias
+Click Save
+
+Using Exchange Management Shell
+
+New-MailContact -Name "John Doe" -ExternalEmailAddress "johndoe@gmail.com" -Alias "johndoe"
+
+
+Get-MailContact johndoe | fl Name,Alias,ExternalEmailAddress

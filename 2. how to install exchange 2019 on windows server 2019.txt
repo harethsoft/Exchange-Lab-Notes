@@ -1,0 +1,84 @@
+2. How to Install Exchange Server 2019 on Windows Server 2019
+
+Pre requirements
+
+Make sure Windows Server 2019 is installed and updated
+Server must be joined to the Active Directory domain
+Exchange prerequisites and AD preparation must be completed
+Log in using a domain account with Schema Admins Enterprise Admins and Organization Management permissions
+
+Start Exchange Installation
+
+Mount the Exchange Server 2019 ISO
+Open the mounted drive
+
+Run setup
+
+Double click Setup.exe
+Or run from command line
+
+Setup.exe
+
+Check for updates
+
+On the Check for Updates page
+Select Connect to the Internet and check for updates
+Or select Do not check for updates now
+Click Next
+
+Introduction page
+
+Review the introduction
+Click Next
+
+License agreement
+
+Accept the license agreement
+Click Next
+
+Malware protection settings
+
+Select Enable malware protection
+Click Next
+
+Server role selection
+
+Select Mailbox role
+Management tools will be selected automatically
+Click Next
+
+Installation space and location
+
+Specify the installation path
+Or keep the default path
+Click Next
+
+Readiness checks
+
+Setup will run readiness checks
+If all checks pass click Install
+
+Installation
+
+Wait for the installation to complete
+This may take some time
+
+Finish setup
+
+When installation is completed successfully
+Click Finish
+
+Post installation
+
+Restart the server if prompted
+
+Verify Exchange installation
+
+Open browser and test the following URLs
+
+[https://localhost/ecp](https://localhost/ecp)
+[https://localhost/owa](https://localhost/owa)
+
+Log in using a domain admin or Exchange admin account
+
+This completes the installation of Exchange Server 2019 on Windows Server 2019

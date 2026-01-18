@@ -1,0 +1,48 @@
+
+
+3. Rename and Move a Mailbox Database in Exchange 2019
+
+Rename Mailbox Database
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+
+Click on Servers
+Click on Databases
+
+Select the mailbox database
+Click on Edit
+
+From General section
+Change database name
+Example
+DB01 to MailboxDB01
+
+Click Save
+
+---
+
+Move Mailbox Database
+Using Exchange Management Shell
+
+Check current database paths
+
+Get-MailboxDatabase | fl Name,EdbFilePath,LogFolderPath
+
+Dismount the database
+
+Dismount-Database -Identity DB01
+
+Move database and log files
+
+Move-DatabasePath -Identity DB01 -EdbFilePath D:\DB01\DB01.edb -LogFolderPath D:\DB01
+
+Mount the database
+
+Mount-Database -Identity DB01
+
+Verify changes
+
+Get-MailboxDatabase | fl Name,EdbFilePath,LogFolderPath
+
+---

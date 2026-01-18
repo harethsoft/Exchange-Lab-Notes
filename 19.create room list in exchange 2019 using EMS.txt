@@ -1,0 +1,22 @@
+19. create room list in exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Groups
+Click +
+Select Distribution group
+Enter name example RoomList-HQ
+Enable Make this group a room list
+Click Save
+
+Using Exchange Management Shell
+
+New-DistributionGroup -Name "harethsoft-Roomlist" -OrganizationalUnit "harethsoft2.com/harethcompany/resources" -RoomList
+Get-DistributionGroup 
+Get-DistributionGroup harethsoft-roomlist | fl name,*recipient*
+
+now our room is created we need to add memebers to this group
+
+Add-DistributionGroupMember -Identity "harethsoft-roomlist" -Member EastConferenceRoom2@harethsoft.com

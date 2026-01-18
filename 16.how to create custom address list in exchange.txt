@@ -1,0 +1,20 @@
+16. how to create custom address list in exchange
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Organization
+Click on Address Lists
+Click +
+Select Address List
+Enter name for the address list
+Define recipient filter conditions as required
+Click Save
+
+Using Exchange Management Shell
+Get-ADUser -Filter {department -eq "HRdept"} | Select Name,UserPrincipalName,Department
+New-AddressList -Name "HRList" -RecipientFilter {Department -eq "HRdept"}
+Get-AddressList | fl Name,RecipientFilter
+
+
+New-AddressList -Name "FinanceList" -RecipientFilter {Department -eq "Financedept"}

@@ -1,0 +1,20 @@
+9. Create Dynamic Distribution Group in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Recipients
+Click on Groups
+Click on + (Add)
+Select Dynamic Distribution Group
+Enter the group name and alias
+Specify recipient filter criteria (e.g., department, company, state)
+Click Save
+
+Using Exchange Management Shell
+
+New-DynamicDistributionGroup -Name "AllSales" -Alias "allsales" -RecipientFilter {Department -eq "Sales"}
+
+Verify the group
+
+Get-DynamicDistributionGroup "AllSales" | fl Name,Alias,RecipientFilter
