@@ -1,0 +1,39 @@
+
+## 38. Configure Mailbox Database Limits in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Servers**
+3. Click **Databases**
+4. Select the mailbox database
+5. Click **Edit** (??)
+6. Go to **Limits**
+7. Configure the following:
+
+   * Issue warning at (GB)
+   * Prohibit send at (GB)
+   * Prohibit send and receive at (GB)
+8. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Set mailbox database quota limits
+Set-MailboxDatabase DB01 -IssueWarningQuota 80GB -ProhibitSendQuota 90GB -ProhibitSendReceiveQuota 100GB
+
+Enable database quota defaults for mailboxes
+Set-MailboxDatabase DB01 -UseDatabaseQuotaDefaults $true
+
+---
+
+### Verify Mailbox Database Limits
+
+Get-MailboxDatabase DB01 | fl IssueWarningQuota,ProhibitSendQuota,ProhibitSendReceiveQuota,UseDatabaseQuotaDefaults
+
+---
+
+

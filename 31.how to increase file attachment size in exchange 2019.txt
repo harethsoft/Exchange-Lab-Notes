@@ -1,0 +1,52 @@
+
+## 31. Increase File Attachment Size in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open Exchange Admin Center
+2. Go to **mail flow**
+3. Go to **receive connectors** tab
+4. Click on **…** (More)
+5. Click **Organization transport settings**
+6. Go to **Limits**
+7. Modify the following values as required:
+
+   * Maximum number of recipients
+   * Maximum receive message size
+   * Maximum send message size
+8. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Set global transport message size
+Set-TransportConfig -MaxSendSize 50MB -MaxReceiveSize 50MB
+
+Set mailbox message size
+Set-Mailbox user01 -MaxSendSize 50MB -MaxReceiveSize 50MB
+
+Set mailbox database message size
+Set-MailboxDatabase DB01 -MaxSendSize 50MB -MaxReceiveSize 50MB
+
+Set Receive Connector message size
+Set-ReceiveConnector "EXCHANGE\Default Frontend EXCHANGE" -MaxMessageSize 50MB
+
+Set Send Connector message size
+Set-SendConnector "Internet Send Connector" -MaxMessageSize 50MB
+
+---
+
+### Verify Current Limits
+
+Get-TransportConfig | fl MaxSendSize,MaxReceiveSize
+Get-Mailbox user01 | fl MaxSendSize,MaxReceiveSize
+Get-MailboxDatabase DB01 | fl MaxSendSize,MaxReceiveSize
+Get-ReceiveConnector | fl Name,MaxMessageSize
+Get-SendConnector | fl Name,MaxMessageSize
+
+---
+
+

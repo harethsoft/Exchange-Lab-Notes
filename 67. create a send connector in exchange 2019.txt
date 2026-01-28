@@ -1,0 +1,43 @@
+67. Create a Send Connector in Exchange 2019
+
+Using Exchange Admin Center
+
+Click on Mail Flow section
+Then click on Send Connectors tab
+
+Click the + icon to create a new Send Connector
+
+In the New Send Connector window
+Enter the name
+Example
+harethsoft_ext_send_connector
+
+Choose the type
+Select Internet
+
+Click Next
+
+Under Network settings
+Select MX record associated with recipient domain
+
+Click Next
+
+Under Address Space
+Click the + icon
+
+Set the following values
+Type SMTP
+Fully Qualified Domain Name FQDN *
+Cost 1
+
+Click Save
+
+Click Next
+
+Under Source Server
+Click the + icon
+Select your Exchange server
+Example
+exchange
+
+Click Finish to create the Send Connector

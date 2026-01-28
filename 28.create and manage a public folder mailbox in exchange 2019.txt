@@ -1,0 +1,32 @@
+28. Create and Manage a Public Folder Mailbox in Exchange Server 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Go to **Public folders**
+Click on **Public folder mailboxes**
+Click **+**
+Enter mailbox name
+Click **Save**
+
+---
+
+Using Exchange Management Shell
+
+Create Public Folder Mailbox
+
+New-Mailbox -PublicFolder -Name "PFMailbox01"
+
+Verify
+
+Get-Mailbox -PublicFolder
+
+
+
+Access Public Folder from Outlook
+
+Open Outlook
+Folder pane
+Right click **Folders**
+Add public folder
+Select required public folder

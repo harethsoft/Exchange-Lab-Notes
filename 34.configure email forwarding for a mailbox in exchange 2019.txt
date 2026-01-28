@@ -1,0 +1,42 @@
+
+
+## 34. Configure Email Forwarding for a Mailbox in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Recipients**
+3. Click **Mailboxes**
+4. Select the mailbox
+5. Click **Edit** (??)
+6. Go to **Mailbox features**
+7. Click **View details** under **Mail Flow**
+8. Enable **Enable forwarding**
+9. Select the recipient mailbox
+10. (Optional) Enable **Deliver message to both forwarding address and mailbox**
+11. Click **Save**
+
+---
+
+using 
+
+### Using Exchange Management Shell
+
+Enable forwarding to another mailbox
+Set-Mailbox user01 -ForwardingAddress user02 -DeliverToMailboxAndForward $true
+
+Forward to external email address
+Set-Mailbox user01 -ForwardingSmtpAddress [user02@external.com](mailto:user02@external.com) -DeliverToMailboxAndForward $true
+
+Disable forwarding
+Set-Mailbox user01 -ForwardingAddress $null -ForwardingSmtpAddress $null
+
+---
+
+### Verify Forwarding Settings
+
+Get-Mailbox user01 | fl ForwardingAddress,ForwardingSmtpAddress,DeliverToMailboxAndForward
+
+

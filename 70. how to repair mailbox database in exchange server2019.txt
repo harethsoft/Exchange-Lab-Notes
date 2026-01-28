@@ -1,0 +1,94 @@
+70. How to Repair a Mailbox Database in Exchange Server 2019
+
+important lesson 
+
+Summary steps using the same style as previous lessons
+
+Go to Servers section
+Then click on Databases tab
+
+Identify the unmounted database
+Example
+ArchiveDB04
+
+Try to mount the database manually
+You will receive an error which indicates database corruption
+
+To repair the database use Exchange Management Shell
+
+First get database file paths
+
+Get-MailboxDatabase | fl Name EdbFilePath LogFolderPath
+
+Note the EDB file path for ArchiveDB04
+
+Check the database state using ESEUTIL
+
+eseutil.exe /mh "F:\db04\ArchiveDB04.edb"
+
+In the output look for the line
+State Dirty Shutdown
+
+This confirms that the database is in an inconsistent state and requires repair
+
+At this stage database repair can be planned using Exchange tools
+Such as soft recovery or hard repair depending on the scenario
+
+This lesson explains how to identify and verify a corrupted mailbox database in Exchange Server 2019
+
+important lesson 
+
+
+
+Standard summarized process in the same lesson style
+
+Stop the Exchange Information Store service
+The database cannot be repaired while it is in use
+
+Stop-Service MSExchangeIS
+
+Check the database state
+
+Use ESEUTIL to verify whether the database is in Clean or Dirty Shutdown
+
+eseutil /mh "C:\ExchangeDB\DB1.edb"
+
+Clean Shutdown means the database is healthy
+Dirty Shutdown means recovery is required
+
+Perform soft recovery first
+This is the recommended and safest option if log files are available
+
+eseutil /r E00 /l "C:\Logs" /d "C:\ExchangeDB"
+
+Soft recovery replays transaction logs and usually fixes the database without data loss
+
+If soft recovery fails perform hard repair
+This is the last resort and may cause data loss
+Always take a backup of the EDB file before running this command
+
+eseutil /p "C:\ExchangeDB\DB1.edb"
+
+Optional database defragmentation
+Recommended after repair to reduce database size and optimize performance
+
+eseutil /d "C:\ExchangeDB\DB1.edb"
+
+Run integrity check
+Ensures database consistency after repair
+
+isinteg -s SERVERNAME -fix -test alltests
+
+Start the Exchange Information Store service
+
+Start-Service MSExchangeIS
+
+Mount the database
+
+Mount-Database DB1
+
+This procedure represents the standard and recommended approach for repairing or recovering an Exchange mailbox database in Exchange Server 2019
+
+ 
+
+I can guide you step-by-step.

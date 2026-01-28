@@ -1,0 +1,32 @@
+
+
+41. enable journaling on mailbox database in exchange server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to servers
+click on databases
+select the mailbox database
+click edit
+go to maintenance tab
+in journaling recipient select or specify the journal mailbox
+click save
+
+---
+
+Using Exchange Management Shell
+
+create journal mailbox if not exists
+New-Mailbox -Name "JournalMailbox" -Alias journalmbx -UserPrincipalName [journal@harethsoft.com](mailto:journal@harethsoft.com) -Password (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force)
+
+enable journaling on mailbox database
+Set-MailboxDatabase DB01 -JournalRecipient [journal@harethsoft.com](mailto:journal@harethsoft.com)
+
+verify database journaling
+Get-MailboxDatabase DB01 | fl Name,JournalRecipient
+
+---
+

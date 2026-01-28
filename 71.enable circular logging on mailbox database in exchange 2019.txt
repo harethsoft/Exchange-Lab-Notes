@@ -1,0 +1,57 @@
+71. Enable Circular Logging on a Mailbox Database in Exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+
+Click on Servers section
+Then click on Databases tab
+
+Select the mailbox database
+Example
+db02
+
+Click on the Edit icon
+
+Go to the Maintenance tab
+
+Enable the option
+Enable circular logging
+
+Click Save
+
+To apply the change
+Dismount the database
+Then mount the database again
+
+Using Exchange Management Shell
+
+List mailbox databases on the server
+
+Get-MailboxDatabase -Server "exchange"
+
+Check the log folder path of the database
+
+Get-MailboxDatabase db02 | fl LogFolderPath
+
+Check if circular logging is enabled
+
+Get-MailboxDatabase db02 | fl CircularLoggingEnabled
+
+Enable circular logging
+
+Set-MailboxDatabase db02 -CircularLoggingEnabled $true
+
+Dismount the database for the change to take effect
+
+Dismount-Database db02
+
+Mount the database again
+
+Mount-Database db02
+
+Verify circular logging status
+
+Get-MailboxDatabase db02 | fl CircularLoggingEnabled
+
+These steps show how to enable circular logging on a mailbox database in Exchange Server 2019 using both Exchange Admin Center and Exchange Management Shell

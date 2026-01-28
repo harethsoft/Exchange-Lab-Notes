@@ -1,0 +1,59 @@
+47. Setting Up Mailbox Permissions in Exchange Server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to recipients
+click on mailboxes
+select the mailbox you want to manage
+click on edit icon
+go to mailbox delegation
+
+configure the following permissions
+
+Send As
+click +
+select the user
+click save
+
+Send on Behalf
+click +
+select the user
+click save
+
+Full Access
+click +
+select the user
+click save
+
+close and save settings
+
+---
+
+Using Exchange Management Shell
+
+grant Full Access permission
+Add-MailboxPermission -Identity user01 -User user02 -AccessRights FullAccess
+
+grant Send As permission
+Add-RecipientPermission -Identity user01 -Trustee user02 -AccessRights SendAs
+
+grant Send on Behalf permission
+Set-Mailbox user01 -GrantSendOnBehalfTo user02
+
+---
+
+Verify mailbox permissions
+
+check Full Access
+Get-MailboxPermission user01
+
+check Send As
+Get-RecipientPermission user01
+
+check Send on Behalf
+Get-Mailbox user01 | fl GrantSendOnBehalfTo
+
+---

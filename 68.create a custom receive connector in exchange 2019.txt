@@ -1,0 +1,50 @@
+68. Create a Custom Receive Connector in Exchange 2019
+
+Using Exchange Admin Center
+
+To create a new Receive Connector
+
+Go to Mail Flow section
+Then click on Receive Connectors tab
+
+Click the + icon
+
+In the New Receive Connector window
+Specify a meaningful name
+Example
+secure TLS partner receive connector
+
+Select the Role
+Frontend Transport
+
+Choose the Type
+Partner
+
+Click Next
+
+In Network Adapter Bindings
+Make sure all available IPv4 addresses are selected
+Ensure the port number is set to 25
+
+Click Next
+
+In Remote Network Settings
+Select the existing IP range and click the - icon to remove it
+
+Click the + icon
+Specify the IP address of the partner server
+Example
+192.168.1.152
+
+Click Save
+
+Click Finish
+
+Select the newly created Receive Connector
+Click the Edit icon
+Go to Security
+
+Under Permission Groups
+Select Anonymous users
+
+Click Save

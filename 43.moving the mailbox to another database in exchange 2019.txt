@@ -1,0 +1,40 @@
+
+
+43. moving the mailbox to another database in exchange server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to recipients
+click on migration
+click + icon
+select move to a different database
+select the users you want to move
+click + icon to add mailbox
+click next
+enter migration batch name (example: move-admin)
+under archive select move the primary mailbox and the archive mailbox if one exists
+under target database select the destination database
+click next
+select receipent account which will get the report on migration task
+click on new
+
+---
+
+Using Exchange Management Shell
+
+move mailbox to another database
+New-MoveRequest -Identity user01 -TargetDatabase DB02
+
+check move request status
+Get-MoveRequest user01
+
+check detailed move status
+Get-MoveRequestStatistics user01
+
+remove completed move request
+Remove-MoveRequest user01
+
+---

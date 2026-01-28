@@ -1,0 +1,37 @@
+
+
+44. disable or delete a mailbox in exchange server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to recipients
+click on mailboxes
+
+to disable mailbox
+select the mailbox
+click on ... (more)
+click disable
+confirm disable
+
+to delete mailbox
+select the mailbox
+click on trash icon (delete)
+confirm delete
+
+---
+
+Using Exchange Management Shell
+
+disable mailbox
+Disable-Mailbox -Identity user01
+
+delete mailbox
+Remove-Mailbox -Identity user01
+
+verify mailbox status
+Get-Mailbox user01
+
+---

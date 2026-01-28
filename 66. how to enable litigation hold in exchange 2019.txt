@@ -1,0 +1,37 @@
+66. How to Enable Litigation Hold in Exchange 2019
+
+Using Exchange Admin Center
+
+Click on Recipients section
+Then click on Mailboxes tab
+
+Select the mailbox for which you want to enable Litigation Hold
+Example
+mohamed.ali
+
+Click on the Edit icon
+
+Click on Mailbox Features
+
+Go to Litigation Hold and enable it
+
+In the Litigation Hold window
+Specify the duration
+Example
+365 days
+
+Optionally type a note
+Example
+Your mailbox is on litigation hold for one year
+
+Click Save to apply the changes
+
+Using Exchange Management Shell
+
+Enable Litigation Hold and set the duration
+
+Set-Mailbox -Identity "mohamed ali" -LitigationHoldEnabled $true -LitigationHoldDuration 365
+
+Verify Litigation Hold status
+
+Get-Mailbox -Identity "mohamed ali" | fl LitigationHold*

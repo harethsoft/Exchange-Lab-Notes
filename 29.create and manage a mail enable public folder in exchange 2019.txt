@@ -1,0 +1,73 @@
+
+
+**29. Create and Manage a Mail-Enabled Public Folder in Exchange Server 2019**
+
+---
+
+### Using Exchange Admin Center
+
+Open Exchange Admin Center
+Go to Public folders
+Click +
+Enter public folder name
+Click Save
+
+Select the created public folder
+Go to Mail settings
+Click Enable
+
+Select the same public folder
+Click Edit
+Review mail settings
+
+Create another public folder
+Do not enable mail for it
+Open settings and verify it is not mail-enabled
+
+Select the mail-enabled public folder
+Go to Folder permissions
+Click Manage
+Click +
+Select user
+Select permission level
+Click Save
+
+Send a test email to the public folder
+
+Sign in with the user mailbox
+Open Outlook
+Go to Folders
+Right-click Favorites
+Click Add Public Folder
+Select the required public folder
+
+---
+
+### Using Exchange Management Shell
+
+Create public folder mailbox (if not exists)
+New-Mailbox -PublicFolder -Name PF-Mailbox01
+
+Create public folder
+New-PublicFolder -Name IT-PublicFolder -Path ""
+
+Mail-enable public folder
+Enable-MailPublicFolder "\IT-PublicFolder"
+
+Verify mail-enabled public folder
+Get-MailPublicFolder "\IT-PublicFolder"
+
+Create another public folder (not mail-enabled)
+New-PublicFolder -Name HR-PublicFolder -Path ""
+
+Verify non mail-enabled public folder
+Get-PublicFolder "\HR-PublicFolder"
+
+Assign permissions to user
+Add-PublicFolderClientPermission "\IT-PublicFolder" -User user01 -AccessRights Editor
+
+Verify permissions
+Get-PublicFolderClientPermission "\IT-PublicFolder"
+
+---
+

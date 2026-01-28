@@ -1,0 +1,20 @@
+50 Create Custom Outlook Web App Policy in Exchange
+
+Open Exchange Admin Center
+Click on Permissions section
+Then click Outlook Web App Policies tab
+Click + to create a custom web app policy
+Enter the name of the policy
+Deselect the features that you do not want a particular mailbox to have
+Click Save
+
+To apply the policy
+Click Recipients
+Select the user for example mohamed.ali
+Click Edit
+Click on Mailbox Features tab
+Then under Email Connectivity click View Details
+Click Browse
+Select the custom web app policy that you created earlier
+Click OK
+Click Save

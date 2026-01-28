@@ -1,0 +1,45 @@
+60. How to Block Emails Using Keywords in Exchange
+
+Using Exchange Admin Center
+
+Click on Mail Flow
+Click on the Rules tab
+
+To create a new rule click the + icon
+Select Create a new rule
+
+In the Name field enter a meaningful name
+Example
+Block specific keywords in message
+
+Under Apply this rule if
+Select The subject or body
+Then select Subject or body includes any of these words
+
+In the new window specify the keywords or phrases
+Example
+movies
+movie
+
+Click OK
+
+Under Do the following
+Select Block the message
+Then select Delete the message without notifying anyone
+
+Add another action
+Select Generate an incident report and send it to
+
+Click Send incident report to
+Select the user for example ex_admin
+
+Under Include these message properties select
+Sender
+Recipients
+Subject
+Matching rules
+
+Click OK
+Then click Save
+
+This rule will block emails that contain specific keywords in the subject or body and silently delete them while notifying the administrator through an incident report

@@ -1,0 +1,63 @@
+65. How to Create In Place Hold in Exchange 2019 eDiscovery
+
+Using Exchange Management Shell
+
+First add an administrator to the Discovery Management role group
+
+Add-RoleGroupMember -Identity "Discovery Management" -Member ex_admin@harethsoft.com
+
+Verify the membership
+
+Get-RoleGroupMember -Identity "Discovery Management"
+
+Now use Exchange Admin Center
+
+Click on Compliance Management section
+Then click on In Place eDiscovery and Hold tab
+
+Click the + icon to start a new wizard
+
+Provide a name
+Example
+harethsoft in place hold
+
+Provide a description
+Example
+Just for testing
+
+Click Next
+
+Select Specify mailboxes to search
+Click the + icon to add mailboxes
+Select mohamed.ali and ali.ali
+
+Click Next
+
+Under Search query select
+Include all content
+
+Click Next
+
+Under From select Users
+Select mohamed.ali and ali.ali
+
+Click Next
+
+Under Message type select
+Email
+
+Click Next
+
+Select the checkbox
+Place content matching the search query in selected sources on hold
+
+Specify the number of days to hold items relative to their received date
+Enter
+365
+
+Click Finish
+
+
+Get-Mailbox -Identity "mohamed ali" | fl *inplacehold*
+
+This configuration places selected mailbox content on hold to prevent deletion and supports legal and compliance requirements in Exchange 2019

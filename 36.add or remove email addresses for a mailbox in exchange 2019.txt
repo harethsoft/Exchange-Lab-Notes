@@ -1,0 +1,53 @@
+
+
+## 36. Add or Remove Email Addresses for a Mailbox in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Recipients**
+3. Click **Mailboxes**
+4. Select the mailbox
+5. Click **Edit** (??)
+6. Go to **Email address**
+7. Click **+** to add new email address
+8. Select **SMTP**
+9. Enter the new email address
+10. Click **Save**
+
+Remove email address
+
+1. Select the email address
+2. Click **-**
+3. Click **Save**
+
+Set primary email address
+
+1. Select the email address
+2. Click **Set as reply address**
+3. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Add new SMTP email address
+Set-Mailbox exadmin -EmailAddresses @{add="administrator@harethsoft.com"}
+
+Remove SMTP email address
+Set-Mailbox exadmin -EmailAddresses @{remove="administrator@harethsoft.com"}
+
+Set primary SMTP address
+Set-Mailbox exadmin -PrimarySmtpAddress [exadmin@harethsoft.local]
+
+---
+
+### Verify Email Addresses
+
+Get-Mailbox exadmin| fl EmailAddresses,PrimarySmtpAddress
+
+---
+
+

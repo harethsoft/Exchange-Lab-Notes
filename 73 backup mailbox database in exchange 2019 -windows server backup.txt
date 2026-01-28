@@ -1,0 +1,7 @@
+73 backup mailbox database in exchange 2019 -windows server backup
+
+
+Install-WindowsFeature windows-server-backup
+then go go server manager console
+click on tools
+click windows verver backup

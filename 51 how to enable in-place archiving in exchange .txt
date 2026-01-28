@@ -1,0 +1,22 @@
+
+Enable In Place Archiving in Exchange
+
+Click on Mailboxes tab
+Select the mailbox for which you want to enable archiving for example mohamed.ali
+On the right side of the page you will see In Place Archive listed as Disabled click Enable
+Select the database that will store the archive
+Click OK
+
+The user can now use Outlook or Outlook on the Web
+
+Open Google Chrome and log in to Outlook Web App
+Sign in with mohamed.ali
+You will see In Place Archive mohamed.ali
+Create folders under the archive
+To archive an email click on any email then right click and select Archive
+
+
+and using powershell
+
+Enable-Mailbox -Identity "ali ali" -ArchiveName aliarchive -ArchiveDatabase db04
+Get-Mailbox -Identity "ali ali" | fl *archive*

@@ -1,0 +1,51 @@
+59. How to Inspect and Block Message Attachments in Exchange
+
+Click on Mail Flow section
+Then click on Rules tab
+
+To create a new rule click the + icon
+Select Create a new rule
+
+Give the rule a name for example
+Block compressed files in attachment
+
+Under Apply this rule if
+Select Any attachment
+Then select File extension includes these words
+
+In the window add the extensions you want to block
+Example
+.zip
+.rar
+.7z
+.cab
+.tar
+
+Add another condition if required
+Select The sender is located
+From the new window select Outside the organization or Inside the organization based on your requirement
+
+Under Do the following
+Select Block the message
+Then select Reject the message and include an explanation
+
+Enter the rejection message
+Example
+Your message is blocked due to unsupported attachment file type
+
+Add another action under Do the following
+Select Generate an incident report and send it to
+
+Click Send incident report to
+From the new window select the recipient for example mohamed.ali
+
+Under Include these message properties select
+Sender
+Recipients
+Subject
+Matching rules
+Original mail
+
+Click Save
+
+This rule helps administrators inspect and control email attachments to enhance security and prevent unsupported or risky file types from entering the organization

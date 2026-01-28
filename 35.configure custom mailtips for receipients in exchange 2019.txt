@@ -1,0 +1,38 @@
+
+
+## 35. Configure Custom MailTips for Recipients in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Recipients**
+3. Click **Mailboxes**
+4. Select the mailbox
+5. Click **Edit** 
+6. Go to **mailTip**
+7. Enter the custom MailTip message
+10. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Set custom MailTip for a mailbox
+Set-Mailbox exadmin -MailTip "This mailbox is monitored by IT team"
+
+Set custom MailTip for a distribution group
+Set-DistributionGroup IT-Team -MailTip "This group is for internal IT communication only"
+
+Clear MailTip
+Set-Mailbox user01 -MailTip $null
+
+---
+
+### Verify MailTip
+
+Get-Mailbox exadmin | fl MailTip
+Get-DistributionGroup IT-Team | fl MailTip
+
+---

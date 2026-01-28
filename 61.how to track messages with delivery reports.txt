@@ -1,0 +1,18 @@
+61. How to Track Messages with Delivery Reports in Exchange 2019
+
+Send a test email from [jay.shah@harethsoft.com](mailto:jay.shah@harethsoft.com) to [ali.ali@harethsoft.com](mailto:ali.ali@harethsoft.com)
+
+Using Exchange Admin Center
+
+Click on Mail Flow section
+Then click on Delivery Reports tab
+
+In Mailbox to search
+Click Browse and select the mailbox ali.ali
+
+In Search for messages received from
+Select the sender jay.shah
+
+Click Search
+
+Review the search results to see the delivery status and details of the message including whether it was delivered delayed or failed

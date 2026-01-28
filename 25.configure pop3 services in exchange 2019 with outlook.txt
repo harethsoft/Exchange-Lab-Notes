@@ -1,0 +1,85 @@
+25. Configure POP3 Services in Exchange Server 2019 with Outlook
+
+Using Services (Windows)
+
+Open Services
+Start Microsoft Exchange POP3
+Start Microsoft Exchange POP3 Backend
+Set both services to Automatic
+
+---
+
+Using Exchange Management Shell
+
+Enable POP3
+
+Set-PopSettings -LoginType PlainTextLogin
+
+Start POP3 Services
+
+Start-Service MSExchangePOP3
+Start-Service MSExchangePOP3BE
+
+Verify POP3 Status
+
+Get-Service MSExchangePOP3*
+
+---
+
+Configure POP3 Authentication
+
+Set-PopSettings -X509CertificateName mail.harethsoft2.com
+
+Restart POP3 Services
+
+Restart-Service MSExchangePOP3
+Restart-Service MSExchangePOP3BE
+
+---
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Servers
+Click on Servers
+Select Exchange Server
+Click Edit
+Click POP3
+Enable POP3
+Click Save
+
+---
+
+Configure Firewall
+
+Open TCP Port 110 (POP3)
+Or TCP Port 995 (POP3 SSL)
+
+---
+
+Configure Outlook (POP3)
+
+Open Outlook
+Click Add Account
+Select Manual setup
+Select POP or IMAP
+
+Incoming mail server: mail.harethsoft2.com
+Outgoing mail server (SMTP): mail.harethsoft2.com
+
+Account type: POP3
+Incoming port: 110 or 995
+Encryption: None or SSL
+
+Username: [user@harethsoft2.com](mailto:user@harethsoft2.com)
+Password: mailbox password
+
+Click Next
+Click Finish
+
+---
+
+Verify POP3 Connection
+
+Send test email
+Receive email via Outlook POP3

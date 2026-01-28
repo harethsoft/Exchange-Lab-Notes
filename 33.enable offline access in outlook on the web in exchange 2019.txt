@@ -1,0 +1,29 @@
+
+
+## 33. Enable Offline Access in Outlook on the Web in Exchange Server 2019
+
+---
+
+open any user outlook on the web
+click on gear icon setting icon
+click on options
+click on general
+click on offline settings
+check the box turn on offline access
+click yes
+click next
+click on next
+press ctl +D
+click next
+click on ok
+add folders u want 
+click on save to save the changes 
+the data will be stored on c\users\exadmin\appdata\local\microsft\internet explorer \indexed db
+you will find file internet.edb
+
+using exchange management shell
+to disable offline on all users
+Get-OwaVirtualDirectory | fl name,identity,server
+
+Set-OwaVirtualDirectory "EXCHANGE\owa (Default Web Site)" -AllowOfflineOn NoComputer -Verbose
+Set-OwaVirtualDirectory "EXCHANGE\owa (Default Web Site)" -AllowOfflineOn allcomputers -Verbose

@@ -1,0 +1,72 @@
+46. Restore a Deleted Mailbox in Exchange Server 2019
+
+
+
+---
+
+
+
+Using Exchange Admin Center
+
+
+
+first create a new user account in active directory to connect the mailbox to
+
+open exchange admin center
+
+go to recipients
+
+click on mailboxes
+
+click on ... (more options)
+
+select connect a mailbox
+
+select deleted mailbox
+
+select the deleted mailbox you want to restore
+
+click on connect icon
+
+you will get a message that no matching users were found
+
+select No, I want to connect to a different user account
+
+choose user mailbox
+
+click next
+
+select the user account
+
+click finish
+
+
+
+---
+
+
+
+Using Exchange Management Shell
+
+
+
+list disconnected (soft deleted) mailboxes
+
+Get-MailboxDatabase | Get-MailboxStatistics | Where {$_.DisconnectReason -eq "SoftDeleted"}
+
+
+
+restore deleted mailbox and connect it to a user
+
+Connect-Mailbox -Identity "User01" -Database "DB01" -User "user01"
+
+
+
+verify restored mailbox
+
+Get-Mailbox user01
+
+
+
+---
+

@@ -1,0 +1,40 @@
+
+Configure Role Based Access Permissions in Exchange
+
+Click on Permissions
+Click on Admin Roles tab
+You will see the predefined role groups
+
+To create a custom role based access group
+Click the + icon
+
+Provide a name for the role group for example harethsoft_recipient_admin
+Provide a description for the role group
+
+Under Roles
+Add the required roles such as
+	Mail Recipients
+	Mail Recipient Creation
+	Mail Tips
+	Monitoring
+	Migration
+	Reset Password
+
+Under Members
+Add the user who will perform the administrative tasks
+
+
+Click Save
+
+If you receive an error related to write scope
+Edit the newly created role group
+Change the Write Scope from Default
+
+Under Organization Unit
+Specify the required OU path example (harethsoft.com/EXCHANGE/Maddina-BO
+
+Click Save again
+
+The custom role based access permission is now configured successfully
+
+ 

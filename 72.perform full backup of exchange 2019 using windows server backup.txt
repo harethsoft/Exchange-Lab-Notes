@@ -1,0 +1,103 @@
+72. Perform a Full Backup of Exchange 2019 Using Windows Server Backup
+
+Preparation
+
+Open Server Manager console
+Go to Tools
+Then open Services
+
+Make sure the service
+Microsoft Exchange Server Extension for Windows Server Backup
+is installed and running
+
+This extension is required for Exchange aware backups
+
+Verify mailbox databases
+
+Open Exchange Management Shell
+
+Get-MailboxDatabase
+
+Install Windows Server Backup feature
+
+Open Windows PowerShell as Administrator
+
+Install-WindowsFeature Windows-Server-Backup
+
+Create Backup Schedule Using Windows Server Backup
+
+Open Server Manager
+Go to Tools
+Click on Windows Server Backup
+
+In the Windows Server Backup console
+Click on Local Backup
+
+Right click on Local Backup
+Select Backup Schedule
+
+Click Next
+
+Select Custom
+Then click Next
+
+Click Add Items
+
+Select the following items
+Bare Metal Recovery
+System State
+EFI System Partition
+Recovery Partition
+Local Disk C
+Volume E
+Volume F
+
+Click Next
+
+Click OK
+
+Click Advanced Settings
+
+Go to VSS Settings tab
+Select VSS Full Backup
+
+Click OK
+
+Click Next
+
+Specify the backup time
+Select Once a day
+
+Click Next
+
+Specify the backup destination
+
+Select Back up to a hard disk that is dedicated for backups
+This should be a separate disk attached to the server
+
+If the disk is not visible
+Click Show all available disks
+
+Select the destination disk
+Click OK
+Click Yes to confirm
+
+Click Finish
+Click Close
+
+Run Backup Manually
+
+In Windows Server Backup
+Click on Local Backup
+
+Select Backup Once
+
+Choose Scheduled backup options
+
+Click Next
+Click Backup
+
+When the backup is completed
+Click Close
+
+This completes a full Exchange 2019 backup using Windows Server Backup with VSS Full Backup enabled

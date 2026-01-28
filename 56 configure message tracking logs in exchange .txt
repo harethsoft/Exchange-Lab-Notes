@@ -1,0 +1,42 @@
+
+
+Configure Message Tracking Logs in Exchange
+
+Using Exchange Admin Center
+
+Go to Servers
+Click on the Servers tab
+Select the mailbox server that you want to configure
+Click the Edit icon
+Go to Transport Logs
+Configure the required settings as shown in the snapshot 56
+
+---
+
+Using Exchange Management Shell to configure message tracking logs
+
+To view current message tracking log settings
+Run
+
+```powershell
+Get-TransportService EXCHANGE | fl *message*
+```
+
+To configure message tracking log path and limits
+Run
+
+```powershell
+Set-TransportService EXCHANGE -MessageTrackingLogPath E:\MessageTrackingLogs\ -MessageTrackingLogMaxFileSize 20MB -MessageTrackingLogMaxDirectorySize 5GB -MessageTrackingLogMaxAge 45.00:00:00
+```
+
+To verify the changes
+Run
+
+```powershell
+Get-TransportService EXCHANGE | fl *message*
+
+Get-MessageTrackingLog
+```
+
+The message tracking logs are now configured successfully
+

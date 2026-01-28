@@ -1,0 +1,37 @@
+
+
+## 32. Configure Message Size Limits for a Mailbox in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Recipients**
+3. Click **Mailboxes**
+4. Select the required mailbox
+5. Click **Edit** (??)
+6. Go to **Mailbox features**
+7. Click **Message size restrictions**
+8. Configure the following:
+
+   * Maximum message size **sent**
+   * Maximum message size **received**
+9. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Set message size limits for a specific mailbox
+Set-Mailbox user01 -MaxSendSize 25MB -MaxReceiveSize 25MB
+
+---
+
+### Verify Mailbox Message Size Limits
+
+Get-Mailbox exadmin| fl MaxSendSize,MaxReceiveSize
+
+---
+
+

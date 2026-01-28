@@ -1,0 +1,78 @@
+23. install and configure an ssl certificate for exchange 2019
+
+befor installing the certificate to to AD
+and add active directory certificate services
+    -cetification authority
+    -certification authority web enrollment
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Servers
+Click on Certificates
+Click +
+Select Create a new certificate
+Enter certificate name
+Select the server exchange
+Specify the domains example
+mail.harethsoft2.com
+autodiscover.harethsoft2.com
+Click Next
+Export the certificate request to a file
+Submit the request to your Certificate Authority
+
+After receiving the certificate
+
+Go back to Exchange Admin Center
+Click on Servers
+Click on Certificates
+Select the pending certificate
+Click Complete
+Browse and select the certificate file
+Click OK
+
+Assign services to the certificate
+
+Select the installed certificate
+Click Edit
+Select services
+IIS
+SMTP
+Click Save
+
+---
+
+Using Exchange Management Shell
+
+$req = New-ExchangeCertificate `
+-GenerateRequest `
+-SubjectName "C=SA, O=harethsoft2, CN=mail.harethsoft2.com" `
+-DomainName mail.harethsoft2.com,exchange.harethsoft2.com,autodiscover.harethsoft2.com `
+-FriendlyName "harethsoft2 SSL" `
+-PrivateKeyExportable $true
+
+$req | Out-File C:\SSL\harethsoft2.req -Encoding ascii
+
+
+notepad C:\SSL\harethsoft2.req
+
+
+certutil -config - -ping
+http://192.168.8.57/certsrv/
+
+
+$cert = Import-ExchangeCertificate -FileData ([Byte[]]$(Get-Content "C:\Users\ex_admin\Desktop\exchange\certnew.cer" -Encoding byte))
+
+
+Enable-ExchangeCertificate -Thumbprint $cert.Thumbprint -Services IIS,SMTP
+
+
+Get-ExchangeCertificate | fl FriendlyName,Subject,Thumbprint,Services,NotAfter
+
+
+Enable-ExchangeCertificate -Thumbprint $cert.Thumbprint -Services IIS,SMTP,IMAP,POP
+
+
+$pwd = Read-Host -Prompt "Enter a password to protect the exported PFX" -AsSecureString
+Export-PfxCertificate -Cert $cert -FilePath "C:\Users\ex_admin\Desktop\exchange\harethsoft2SSL.pfx" -Password $pwd
+
+

@@ -1,0 +1,39 @@
+58. Configure Mailbox Auditing in Exchange 2019
+
+---
+
+Using Exchange Management Shell
+
+Enable mailbox auditing for a specific mailbox
+Run
+Set-Mailbox -Identity "mohamed ali" -AuditEnabled $true
+This command enables mailbox auditing for the specified mailbox
+
+Verify mailbox auditing status
+Run
+Get-Mailbox -Identity "mohamed ali" | fl Audit*
+This command displays all auditing-related settings for the mailbox
+
+Configure audit log retention period
+Run
+Set-Mailbox -Identity "mohamed ali" -AuditLogAgeLimit 365:00:00:00
+This command sets the mailbox audit log retention period to 365 days
+
+Verify the audit log age limit
+Run
+Get-Mailbox -Identity "mohamed ali" | fl Audit*
+This command confirms that the new audit log age limit is applied
+
+Disable mailbox auditing if required
+Run
+Set-Mailbox -Identity "mohamed ali" -AuditEnabled $false
+This command disables mailbox auditing for the mailbox
+
+Verify auditing is disabled
+Run
+Get-Mailbox -Identity "mohamed ali" | fl Audit*
+This command confirms that mailbox auditing is no longer enabled
+
+---
+
+Mailbox auditing allows administrators to track actions performed on mailboxes such as message access deletion and folder changes and is useful for security auditing and compliance purposes

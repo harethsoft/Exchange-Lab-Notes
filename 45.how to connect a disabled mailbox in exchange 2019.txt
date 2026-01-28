@@ -1,0 +1,25 @@
+
+45. connect a disabled mailbox in exchange server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to recipients
+click on mailboxes
+click on ...(connect a mailbox)
+select the disabled mailbox from the list
+click connect
+click on :yes,connect to the user account above 
+---
+
+Using Exchange Management Shell
+
+connect disabled mailbox to a user
+Connect-Mailbox -Identity "user01" -Database "DB01" -User "user01"
+
+verify mailbox connection
+Get-Mailbox user01
+
+---

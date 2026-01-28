@@ -1,0 +1,38 @@
+62. How to Configure Data Loss Prevention DLP Policy in Exchange 2019
+
+Using Exchange Admin Center
+
+Click on Compliance Management
+Then click on Data Loss Prevention
+
+Click the + icon
+Select New custom DLP policy
+
+Provide a name for the policy
+Example
+Block Aadhaar card and PAN information from being leaked
+
+In Choose the state of this DLP policy
+Select Enabled
+
+In Choose the mode for the requirements in this DLP policy
+Select Enforce
+
+Click Save
+
+Now select the newly created DLP policy
+Click on the Edit icon
+
+Go to the Rules tab
+Click the + icon
+Select Block messages with sensitive information
+
+Configure the rule as required
+Define the sensitive information types according to your requirement
+For example select Aadhaar number and PAN number as the sensitive information types
+
+Adjust the conditions and actions as needed based on the policy design
+
+Click Save
+
+This DLP policy will help prevent sensitive information such as Aadhaar and PAN details from being shared through email in Exchange 2019

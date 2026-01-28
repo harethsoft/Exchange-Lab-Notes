@@ -1,0 +1,32 @@
+## 39. Configure Email Disclaimer in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Mail flow**
+3. Click **Rules**
+4. Click **+**
+5. Select **Apply disclaimers**
+6. Enter rule name
+7. Under **Apply this rule if**, select the condition (e.g. sender is inside the organization)
+8. Under **Do the following**, choose **Append the disclaimer**
+9. Enter disclaimer text
+10. Select **Fallback action** (Wrap / Ignore / Reject)
+11. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Create transport rule with disclaimer
+New-TransportRule -Name "Company Disclaimer" -FromScope InOrganization -ApplyHtmlDisclaimerText "<br><br>---<br>This email is confidential." -ApplyHtmlDisclaimerLocation Append -ApplyHtmlDisclaimerFallbackAction Wrap
+
+---
+
+### Verify Disclaimer Rule
+
+Get-TransportRule "Company Disclaimer" | fl Name,State,ApplyHtmlDisclaimerText,ApplyHtmlDisclaimerLocation
+
+---

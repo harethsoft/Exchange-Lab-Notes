@@ -1,0 +1,29 @@
+
+Create and Manage User Role Assignment Policy in Exchange
+
+Click on Permissions
+Click on User Roles
+
+To create a new user role assignment policy
+Click the + icon
+Provide a name for the policy for example All Standard Users
+
+Select the required roles such as
+My Contact Information
+My Profile Information
+My Base Options
+
+Click Save
+
+To assign the role assignment policy to a specific user
+Go to Recipients
+Select the user for example mohamed.ali
+Click the Edit icon
+Go to Mailbox Features
+
+Under Role Assignment Policy
+Select the policy that was created earlier All Standard Users
+
+Click Save
+
+The user role assignment policy is now created and assigned successfully

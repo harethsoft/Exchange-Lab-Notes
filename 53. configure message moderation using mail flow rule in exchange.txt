@@ -1,0 +1,26 @@
+
+Configure Message Moderation Using Mail Flow Rule in Exchange
+
+Click on Mail Flow section
+Then click Rules tab
+To create a new rule click +
+From the list select Send messages to a moderator
+
+Enter a name for the rule for example Moderate outside mail from Saleh Ali
+
+Under Apply this rule if
+Select The sender is
+Choose the required user for example mohamed.ali
+
+Click Add condition
+Select The recipient is located
+Choose Outside the organization
+
+Under Do the following
+Select Forward the message for approval to these people
+Choose the moderator for example mohamed.ali
+
+If you want to add an exception
+Click Add exception and configure the required condition
+
+Click Save

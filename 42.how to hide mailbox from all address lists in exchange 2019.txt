@@ -1,0 +1,26 @@
+42. hide mailbox from all address lists in exchange server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to recipients
+click on mailboxes
+select the mailbox
+click edit
+go to general
+check the box -hide from address lists
+click save
+
+---
+
+Using Exchange Management Shell
+
+hide mailbox from address lists
+Set-Mailbox jornaling -HiddenFromAddressListsEnabled $true
+
+verify mailbox hidden status
+Get-Mailbox jornaling | fl HiddenFromAddressListsEnabled
+
+---

@@ -1,0 +1,19 @@
+
+
+Configure Message Moderation for a Group in Exchange
+
+Click on Recipients section
+Then click on Groups
+Select the required group for example Surat Users
+Click on the Edit icon
+
+In the group properties page
+Click on Message Approval
+
+Select the option Messages sent to this group have to be approved by a moderator
+
+Click the + icon to add a group moderator for example mohamed.ali
+
+You can also specify users who do not require message approval
+
+Click Save

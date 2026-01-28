@@ -1,0 +1,50 @@
+26. Configure Outlook Anywhere in Exchange Server 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Servers
+Click on Servers
+Select the Exchange Server
+Click Edit
+Click Outlook Anywhere
+Enable Outlook Anywhere
+External host name: mail.harethsoft2.com
+Authentication method: NTLM
+Click Save
+
+---
+
+Using Exchange Management Shell
+
+Enable Outlook Anywhere
+
+Enable-OutlookAnywhere -Server EXCHANGE -ExternalHostname mail.harethsoft2.com -InternalHostname exchange.harethsoft2.com -ExternalClientsRequireSsl $true -InternalClientsRequireSsl $true -DefaultAuthenticationMethod NTLM
+
+---
+
+Verify Outlook Anywhere
+
+Get-OutlookAnywhere | fl Server,InternalHostname,ExternalHostname,ExternalClientsRequireSsl,InternalClientsRequireSsl,DefaultAuthenticationMethod
+
+---
+
+Configure Firewall
+
+Open TCP Port 443
+
+---
+
+Configure Outlook Client
+
+Open Outlook
+Add new account
+Use same mailbox credentials
+Outlook will automatically detect Outlook Anywhere
+
+---
+
+Verify Connectivity
+
+Outlook status bar ? Connected to Microsoft Exchange
+Connection Status shows HTTPS

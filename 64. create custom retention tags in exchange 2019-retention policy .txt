@@ -1,0 +1,45 @@
+64. Create Custom Retention Tags in Exchange 2019 Retention Policy
+
+Using Exchange Admin Center
+
+Click on Compliance Management section
+Then click on Retention Tags
+
+To create a new retention tag click the + icon
+
+You will see three types of retention tags
+Default policy tag
+Retention policy tag for folders
+Personal tag
+
+In this example we will create a Personal tag
+Select the third option
+Applied by users to items and folders personal
+
+In the New retention tag window
+
+In the Name field enter a meaningful name
+Example
+harethsoft_pt_2year_move_to_archive
+
+This name will be visible to end users
+
+Under Retention action select
+Move to archive
+
+Under Retention period select
+When the item reaches the following age in days
+Enter
+720
+
+In the Comment field enter a note
+Example
+This tag will move email messages to the archive after 2 years
+
+Click Save
+
+Using the same steps you can also create
+Default policy tags
+Retention policy tags for folders
+
+Exchange provides three types of retention tags and the creation process is similar for each type with minor differences in scope and usage

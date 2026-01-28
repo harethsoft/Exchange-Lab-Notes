@@ -1,0 +1,43 @@
+## 40. Enable Journaling for a Specific Mailbox in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Compliance management**
+3. Select **Journaling**
+4. Click **+**
+5. Enter **Journal rule name**
+6. In **Send journal reports to**, select the **journal mailbox**
+7. In **Journal messages for recipient**, select the **specific mailbox**
+8. Select **Scope** (Internal / External / Global)
+9. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Create journaling rule for a specific mailbox
+
+New-JournalRule -Name "exadmin Journaling" -JournalEmailAddress journaling@harethsoft.local -Recipient exadmin@harethsoft.com -Scope Global
+
+---
+
+### Verify Journaling Rule
+
+Get-JournalRule exadmin Journaling" | fl Name,Recipient,JournalEmailAddress,Scope,Enabled
+
+---
+
+### Disable Journaling Rule (Optional)
+
+Disable-JournalRule "User01 Journaling"
+
+---
+
+### Remove Journaling Rule (Optional)
+
+Remove-JournalRule "User01 Journaling"
+
+---

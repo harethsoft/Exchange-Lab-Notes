@@ -1,0 +1,20 @@
+27. Configure Internal Outlook Client for Exchange Server 2019
+
+
+Configure Outlook (Internal Client)
+
+Open Control Panel
+Mail
+Show Profiles
+Add
+Enter user email and password
+Finish
+
+---
+
+Verify Outlook Connection
+
+Ctrl + Right click Outlook icon
+Connection Status
+Protocol: HTTPS
+Server: exchange.harethsoft2.com

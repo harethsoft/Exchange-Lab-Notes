@@ -1,0 +1,52 @@
+63. How to Configure Retention Policies in Exchange 2019
+
+Using Exchange Admin Center
+
+To create a new retention policy
+
+Click on Compliance Management section
+Then click on Retention Policies tab
+
+You will see the Default MRM Policy
+This policy is applied automatically when a new mailbox is created
+
+To verify the default policy
+
+Go to Recipients section
+Click on Mailboxes
+Select any user and click on the Edit icon
+Go to Mailbox Features
+Under Retention Policy you will see Default MRM Policy
+
+Now create a new retention policy
+
+Go back to Compliance Management section
+Click on Retention Policies tab
+Click the + icon to create a new retention policy
+
+In the Name field enter a meaningful name
+Example
+AutoArchiving_OneYear
+
+To add retention tags click the + icon
+You will see a list of available retention tags
+
+From the list select
+Personal 1 year move to archive
+
+Click Save
+
+To apply the retention policy to a user
+
+Go to Recipients section
+Click on Mailboxes
+Select the user and click on the Edit icon
+Go to Mailbox Features
+
+Under Retention Policy select the newly created policy
+Example
+AutoArchiving_OneYear
+
+Click Save
+
+This retention policy will automatically move items to the archive mailbox after one year according to the selected retention tag

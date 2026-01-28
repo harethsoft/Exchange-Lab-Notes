@@ -1,0 +1,62 @@
+
+
+24. Export and Import Certificate in Exchange Server 2019
+
+Using Exchange Admin Center
+
+Export Certificate
+
+Open Exchange Admin Center
+Click on Servers
+Click on Certificates
+Select the certificate
+Click … (More)
+Click Export
+Enter file path
+Enter password
+Click OK
+
+---
+
+Import Certificate
+
+Open Exchange Admin Center
+Click on Servers
+Click on Certificates
+Click +
+Select Import Exchange certificate
+Browse to the certificate (.pfx)
+Enter password
+Select Exchange server
+Click Save
+
+---
+
+Using Exchange Management Shell
+
+Export Certificate
+
+Get-ExchangeCertificate
+
+$pwd = Read-Host -AsSecureString
+
+Export-ExchangeCertificate -Thumbprint ED5B78F73F34854ACFA3666B55167A845B2520DA -BinaryEncoded:$true -Password $pwd -FileName C:\SSL\harethsoft2.pfx
+
+---
+
+Import Certificate
+
+$pwd = Read-Host -AsSecureString
+
+$cert = Import-ExchangeCertificate -FileData ([Byte[]]$(Get-Content C:\SSL\harethsoft2.pfx -Encoding byte)) -Password $pwd
+
+Enable-ExchangeCertificate -Thumbprint $cert.Thumbprint -Services IIS,SMTP
+
+---
+
+Verify Certificate
+
+Get-ExchangeCertificate | fl FriendlyName,Thumbprint,Services,NotAfter
+
+---
+

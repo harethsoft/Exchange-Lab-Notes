@@ -1,0 +1,41 @@
+
+
+## 37. Configure Storage Quota for a Mailbox in Exchange Server 2019
+
+---
+
+### Using Exchange Admin Center
+
+1. Open **Exchange Admin Center**
+2. Go to **Recipients**
+3. Click **Mailboxes**
+4. Select the mailbox
+5. Click **Edit** (??)
+6. Go to **Mailbox usage**
+7. Click **More options**
+8. Uncheck **Use the default quota settings**
+9. Configure the following:
+
+   * Issue warning at (GB)
+   * Prohibit send at (GB)
+   * Prohibit send and receive at (GB)
+10. Click **Save**
+
+---
+
+### Using Exchange Management Shell
+
+Set custom mailbox quota
+Set-Mailbox exadmin -UseDatabaseQuotaDefaults $false -IssueWarningQuota 8GB -ProhibitSendQuota 9GB -ProhibitSendReceiveQuota 10GB
+
+Use database default quota
+Set-Mailbox exadmin -UseDatabaseQuotaDefaults $true
+
+---
+
+### Verify Mailbox Quota
+
+Get-Mailbox user01 | fl UseDatabaseQuotaDefaults,IssueWarningQuota,ProhibitSendQuota,ProhibitSendReceiveQuota
+
+---
+

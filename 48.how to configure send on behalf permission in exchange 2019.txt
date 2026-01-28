@@ -1,0 +1,41 @@
+48. Configure Send on Behalf Permission in Exchange Server 2019
+
+---
+
+Using Exchange Admin Center
+
+open exchange admin center
+go to recipients
+click on mailboxes
+select the mailbox you want to configure
+click on edit icon
+go to mailbox delegation
+under Send on Behalf
+click + icon
+select the user who will send on behalf
+click save
+close the settings
+
+---
+
+Using Exchange Management Shell
+
+assign Send on Behalf permission
+Set-Mailbox user01 -GrantSendOnBehalfTo user02
+
+assign Send on Behalf to multiple users
+Set-Mailbox user01 -GrantSendOnBehalfTo user02,user03
+
+add user without removing existing permissions
+Set-Mailbox user01 -GrantSendOnBehalfTo @{Add="user02"}
+
+remove Send on Behalf permission
+Set-Mailbox user01 -GrantSendOnBehalfTo @{Remove="user02"}
+
+---
+
+Verify Send on Behalf permission
+
+Get-Mailbox user01 | fl GrantSendOnBehalfTo
+
+---

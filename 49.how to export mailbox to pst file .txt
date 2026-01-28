@@ -1,0 +1,56 @@
+
+
+## **Steps to Export a Mailbox to PST in Exchange Admin Center**
+
+### **1 Enable the Mailbox Import Export Role**
+
+1. Open **Exchange Admin Center (EAC)**.
+2. Go to **Permissions ? Admin Roles**.
+3. Select **Organization Management** and click **Edit**.
+4. Under **Roles**, click **+** to add a new role.
+5. Add the role **Mailbox Import Export**.
+6. Click **Save**.
+7. **Sign out of EAC** and **sign back in** to apply the changes.
+
+---
+
+### *2 Create a Shared Folder for PST Export**
+
+1. On the local disk (C:), create a folder, for example:
+
+```
+C:\PSTExport
+```
+
+2. Right-click the folder ? **Properties ? Sharing ? Advanced Sharing ? Permissions**.
+3. Add **Exchange Trusted Subsystem** and give **Read and Change** permissions.
+4. Also add **Authenticated Users** and give **Read and Change** permissions.
+5. Copy the network path for the folder, e.g.:
+
+```
+\\Exchange\PSTExport
+```
+
+---
+
+### **3 Export the Mailbox to PST**
+
+1. In **EAC**, go to **Recipients ? Mailboxes**.
+2. Select the mailbox you want to export.
+3. Click **… (More options) ? Export to a PST file**.
+4. Choose **Export only the contents of this mailbox** and click **Next**.
+5. Specify the **shared folder path** and the file name, for example:
+
+```
+\\Exchange\PSTExport\Jay.pst
+```
+
+6. Click **Next** and optionally check **Send notification email when the export is complete**.
+7. Click **Finish** to start the export.
+
+---
+
+After completing these steps, the mailbox will be exported to the PST file in the shared folder. 
+You can monitor the progress in **Export History** under **Compliance Management**.
+
+

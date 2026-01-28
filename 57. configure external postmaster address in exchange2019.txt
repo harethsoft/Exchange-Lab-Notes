@@ -1,0 +1,41 @@
+
+
+Configure External Postmaster Address in Exchange 2019
+
+---
+
+Using Exchange Management Shell
+
+Check the current external postmaster address
+Run Get-TransportConfig | fl ExternalPostmasterAddress
+This command displays the current external postmaster address for the organization
+
+Set a new external postmaster address
+Run Set-TransportConfig -ExternalPostmasterAddress postmaster@harethsoft.com
+This command sets the email address that will receive delivery reports and non-delivery notifications from external senders
+
+Verify the change
+Run Get-TransportConfig | fl ExternalPostmasterAddress
+The result will show ExternalPostmasterAddress : [postmaster@harethsoft.com](mailto:postmaster@harethsoft.com)
+
+Remove the external postmaster address if needed
+Run Set-TransportConfig -ExternalPostmasterAddress $null
+This command removes the currently configured external postmaster address
+
+Verify removal
+Run Get-TransportConfig | fl ExternalPostmasterAddress
+The result will show ExternalPostmasterAddress :
+
+---
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Mail Flow section
+Click on Receive Connectors tab
+Click ... (More options) and select Organization Transport Settings
+In the Properties window click on Delivery
+Under External Postmaster Address specify the external postmaster address for example [postmaster@harethsoft.com](mailto:postmaster@harethsoft.com)
+Click Save
+
+Now any delivery reports or non-delivery notifications from external senders will be sent to the specified external postmaster address

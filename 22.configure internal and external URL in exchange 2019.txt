@@ -1,0 +1,41 @@
+22. configure internal and external URL in exchange 2019
+
+Using Exchange Admin Center
+
+Open Exchange Admin Center
+Click on Servers
+Click on Virtual Directories
+Select a virtual directory example OWA
+Click Edit
+Set Internal URL
+Set External URL
+Click Save
+
+Repeat the same steps for
+ECP
+EWS
+ActiveSync
+OAB
+MAPI
+
+---
+
+Using Exchange Management Shell
+
+Get-OwaVirtualDirectory | fl Name,InternalUrl,ExternalUrl
+Set-OwaVirtualDirectory -Identity "exchange\owa (Default Web Site)" -InternalUrl [https://mail.harethsoft2.com/owa](https://mail.harethsoft2.com/owa) -ExternalUrl [https://mail.harethsoft2.com/owa](https://mail.harethsoft2.com/owa)
+
+Get-EcpVirtualDirectory | fl Name,InternalUrl,ExternalUrl
+Set-EcpVirtualDirectory -Identity "exchange\ecp (Default Web Site)" -InternalUrl [https://mail.harethsoft2.com/ecp](https://mail.harethsoft2.com/ecp) -ExternalUrl [https://mail.harethsoft2.com/ecp](https://mail.harethsoft2.com/ecp)
+
+Get-WebServicesVirtualDirectory | fl Name,InternalUrl,ExternalUrl
+Set-WebServicesVirtualDirectory -Identity "exchange\EWS (Default Web Site)" -InternalUrl [https://mail.harethsoft2.com/EWS/Exchange.asmx](https://mail.harethsoft2.com/EWS/Exchange.asmx) -ExternalUrl [https://mail.harethsoft2.com/EWS/Exchange.asmx](https://mail.harethsoft2.com/EWS/Exchange.asmx)
+
+Get-ActiveSyncVirtualDirectory | fl Name,InternalUrl,ExternalUrl
+Set-ActiveSyncVirtualDirectory -Identity "exchange\Microsoft-Server-ActiveSync (Default Web Site)" -InternalUrl [https://mail.harethsoft2.com/Microsoft-Server-ActiveSync](https://mail.harethsoft2.com/Microsoft-Server-ActiveSync) -ExternalUrl [https://mail.harethsoft2.com/Microsoft-Server-ActiveSync](https://mail.harethsoft2.com/Microsoft-Server-ActiveSync)
+
+Get-OabVirtualDirectory | fl Name,InternalUrl,ExternalUrl
+Set-OabVirtualDirectory -Identity "exchange\OAB (Default Web Site)" -InternalUrl [https://mail.harethsoft2.com/OAB](https://mail.harethsoft2.com/OAB) -ExternalUrl [https://mail.harethsoft2.com/OAB](https://mail.harethsoft2.com/OAB)
+
+Get-MapiVirtualDirectory | fl Name,InternalUrl,ExternalUrl
+Set-MapiVirtualDirectory -Identity "exchange\MAPI (Default Web Site)" -InternalUrl [https://mail.harethsoft2.com/mapi](https://mail.harethsoft2.com/mapi) -ExternalUrl [https://mail.harethsoft2.com/mapi](https://mail.harethsoft2.com/mapi)

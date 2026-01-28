@@ -1,0 +1,57 @@
+**30. Configure Message Delivery Restrictions for a Mailbox in Exchange Server 2019**
+
+---
+
+### Using Exchange Admin Center
+
+Open Exchange Admin Center
+Go to Recipients
+Click Mailboxes
+Select the required mailbox
+Click Edit (??)
+
+Go to Mailbox features
+Scroll to Message delivery restrictions
+Click View details
+
+Configure who can send messages to this mailbox
+Select one of the following options:
+
+* Accept messages from all senders
+* Accept messages only from the following senders
+* Reject messages from the following senders
+
+Click +
+Select users or groups
+Click Add
+
+(Optional)
+Enable Require that all senders are authenticated
+
+Click Save
+Click Save again
+
+---
+
+### Using Exchange Management Shell
+
+Allow messages only from specific users
+Set-Mailbox user01 -AcceptMessagesOnlyFrom user02,user03
+
+Reject messages from specific users
+Set-Mailbox user01 -RejectMessagesFrom user04,user05
+
+Allow messages only from a specific group
+Set-Mailbox user01 -AcceptMessagesOnlyFromDLMembers SalesGroup
+
+Reject messages from a specific group
+Set-Mailbox user01 -RejectMessagesFromDLMembers HRGroup
+
+Require sender authentication
+Set-Mailbox user01 -RequireSenderAuthenticationEnabled $true
+
+Disable sender authentication requirement
+Set-Mailbox user01 -RequireSenderAuthenticationEnabled $false
+
+Verify message delivery restrictions
+Get-Mailbox user01 | fl AcceptMessagesOnlyFrom,RejectMessagesFrom,RequireSenderAuthenticationEnabled
