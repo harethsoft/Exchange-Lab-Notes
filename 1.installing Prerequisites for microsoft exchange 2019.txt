@@ -1,4 +1,4 @@
-1. Installing Prerequisites for Microsoft Exchange Server 2019
+01. Installing Prerequisites for Microsoft Exchange Server 2019
 
 Install required software
 
@@ -32,3 +32,4 @@ F:\Setup.exe /PrepareAD /OrganizationName:"harethsoft" /IAcceptExchangeServerLic
 Prepare all domains
 
 F:\Setup.exe /PrepareAllDomains /IAcceptExchangeServerLicenseTerms_DiagnosticDataON
+
