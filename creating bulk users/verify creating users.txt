@@ -1,0 +1,2 @@
+Get-Mailbox | ft Name,PrimarySmtpAddress
+Get-ADUser -Filter * -Properties Department | ft Name,Department

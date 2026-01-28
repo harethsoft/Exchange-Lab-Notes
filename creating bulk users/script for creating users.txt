@@ -1,0 +1,19 @@
+cd "C:\Users\exadmin\Desktop\last exchange\creating bulk users"
+
+
+$Users = Import-Csv "users_corrected.csv"
+
+foreach ($User in $Users) {
+
+    $SecurePass = ConvertTo-SecureString $User.Password -AsPlainText -Force
+
+    New-Mailbox `
+        -Name "$($User.FirstName) $($User.LastName)" `
+        -UserPrincipalName "$($User.Username)@$($User.EmailDomain)" `
+        -SamAccountName $User.Username `
+        -FirstName $User.FirstName `
+        -LastName $User.LastName `
+        -OrganizationalUnit $User.OU `
+        -Password $SecurePass `
+        -ResetPasswordOnNextLogon $false
+}

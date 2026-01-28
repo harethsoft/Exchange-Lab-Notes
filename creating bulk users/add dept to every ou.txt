@@ -1,0 +1,11 @@
+# IT
+Get-ADUser -SearchBase "OU=IT,OU=exchange,DC=harethsoft,DC=local" -Filter * |
+ForEach-Object { Set-ADUser $_ -Department "IT" }
+
+# Sales
+Get-ADUser -SearchBase "OU=sales,OU=exchange,DC=harethsoft,DC=local" -Filter * |
+ForEach-Object { Set-ADUser $_ -Department "Sales" }
+
+# Finance
+Get-ADUser -SearchBase "OU=finance,OU=exchange,DC=harethsoft,DC=local" -Filter * |
+ForEach-Object { Set-ADUser $_ -Department "Finance" }
