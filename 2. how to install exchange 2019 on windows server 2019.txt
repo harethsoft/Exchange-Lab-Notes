@@ -1,4 +1,4 @@
-2. How to Install Exchange Server 2019 on Windows Server 2019
+02. How to Install Exchange Server 2019 on Windows Server 2019
 
 Pre requirements
 
@@ -82,3 +82,4 @@ Open browser and test the following URLs
 Log in using a domain admin or Exchange admin account
 
 This completes the installation of Exchange Server 2019 on Windows Server 2019
+
