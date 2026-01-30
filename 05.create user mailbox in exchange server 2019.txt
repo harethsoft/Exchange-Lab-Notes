@@ -26,3 +26,5 @@ New-Mailbox -Name "User01" `
 Verify mailbox
 
 Get-Mailbox user01
+updated
+
