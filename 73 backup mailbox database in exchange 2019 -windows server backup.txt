@@ -2,6 +2,17 @@
 
 
 Install-WindowsFeature windows-server-backup
-then go go server manager console
+then go to server manager console
 click on tools
-click windows verver backup
+click windows server backup as shown in 73.01 snapshot
+right click on local backup and select backup once as shown in 73.02 snapshot
+select custom and click next --73.03
+click on add items 73.04
+select the volume that you want to backup 73.05
+then clcick on advanced setting 
+then click on vss settings
+select vss full backup 73.06
+specify destingation type select local drives
+then choose drive destination  73.07
+then click backup to start backup progress 73.08
+then click close 
