@@ -1,0 +1,107 @@
+
+
+84. repair corrupt exchange database using stellar repair for exchange
+
+---
+
+Using Stellar Repair for Exchange Software
+
+---
+download and install StellarRepairforExchange
+the database has an error as shown in 84.01 so we will repair it using stellar repair
+
+### When to Use Stellar Repair
+
+database will not mount
+eseutil soft recovery failed
+eseutil hard repair failed or not recommended
+edb file is corrupt
+logs are missing or damaged
+
+---
+
+### Prerequisites
+
+exchange services stopped
+copy of corrupted edb file available
+sufficient disk space for export
+stellar repair for exchange installed
+
+---
+
+### Stop Exchange Services
+
+open services
+stop the following services
+
+Microsoft Exchange Information Store
+Microsoft Exchange Transport
+Microsoft Exchange Mailbox Assistants
+
+---
+
+### Launch Stellar Repair for Exchange
+
+open Stellar Repair for Exchange
+click Browse
+select corrupted edb file
+click Repair
+
+---
+
+### Scan Process
+
+wait for scan to complete
+preview mailboxes and mailbox items
+verify folders and emails
+
+---
+
+### Export Repaired Data
+
+click Save Repaired File
+
+choose export option
+
+export to live exchange
+or
+export to pst
+
+---
+
+### Export to Live Exchange
+
+select Export to Live Exchange
+enter exchange admin credentials
+select target mailbox or database
+start export process
+
+wait until export completes
+
+---
+
+### Export to PST
+
+select Export to PST
+choose destination path
+click Start Export
+
+---
+
+check the snapshot 84.02
+
+### Verify Restored Mailbox
+
+open outlook or owa
+verify emails and folders
+confirm restored data
+
+---
+
+### Notes
+
+stellar repair works without log files
+does not modify original edb file
+recommended when native tools fail
+
+---

@@ -1,0 +1,17 @@
+
+80. Enable Single Item Recovery for User Mailbox in Exchange Server 2019
+
+---
+
+---
+
+Using Exchange Management Shell
+
+enable single item recovery
+Set-Mailbox ahmed.fin1 -SingleItemRecoveryEnabled $true
+
+verify status
+Get-Mailbox ahmed.fin1 | fl SingleItemRecoveryEnabled
+
+---
+

@@ -1,0 +1,98 @@
+
+
+83. how to install exchange server 2019 using command line mode
+
+---
+
+Using Command Line and PowerShell
+
+---
+
+### Prerequisites
+
+windows server 2019
+server joined to domain
+static ip address
+logged in as domain admin
+active directory schema prepared
+install prerequisites as shown in lesson 1
+
+---
+
+### Install Required Windows Features
+
+open PowerShell as administrator
+
+Install-WindowsFeature Server-Media-Foundation
+Install-WindowsFeature RSAT-ADDS
+
+restart the server
+
+---
+
+### Prepare Active Directory
+
+open command prompt as administrator
+go to exchange setup folder
+
+prepare schema
+
+Setup.exe /PrepareSchema /IAcceptExchangeServerLicenseTerms
+
+prepare active directory
+
+Setup.exe /PrepareAD /OrganizationName:"HarethOrg" /IAcceptExchangeServerLicenseTerms
+
+prepare domain
+
+Setup.exe /PrepareAllDomains /IAcceptExchangeServerLicenseTerms
+
+wait until all steps complete successfully
+
+---
+
+### Install Exchange Server 2019 (Mailbox Role)
+
+open command prompt as administrator
+go to exchange setup folder
+
+install exchange using command line
+
+Setup.exe /Mode:Install /Roles:Mailbox /IAcceptExchangeServerLicenseTerms
+
+wait until installation completes
+
+restart the server
+
+---
+
+### Verify Exchange Installation
+
+open Exchange Management Shell
+
+check exchange server
+
+Get-ExchangeServer
+
+check services
+
+Get-Service *Exchange*
+
+---
+
+### Verify Exchange URLs
+
+open browser
+
+[https://server-name/ecp](https://server-name/ecp)
+[https://server-name/owa](https://server-name/owa)
+
+---
+
+### Notes
+
+exchange 2019 has mailbox role only
+command line install useful for automation
+always restart after installation
+
+---

@@ -1,0 +1,95 @@
+76. How to Create a Recovery Mailbox Database in Exchange Server 2019
+
+---
+topic is already expland in lesson 75
+
+Using Exchange Management Shell and Windows Server Backup
+
+---
+
+### Restore Database Files Using Windows Server Backup
+
+open Windows Server Backup
+click Recover
+
+on Getting Started
+select This server
+click Next
+(snapshot 76.01)
+
+select backup date
+click Next
+(snapshot 76.02)
+
+select recovery type
+File and folders
+click Next
+(snapshot 76.03)
+
+select items to recover
+select mailbox database and log files
+click Next
+(snapshot 76.04)
+
+specify recovery options
+Recover to original location
+click Next
+(snapshot 76.05)
+
+click Recover
+wait until recovery completes
+click Close
+
+now mailbox database and log files are restored to disk
+
+---
+
+### Create Recovery Mailbox Database
+
+create recovery mailbox database
+New-MailboxDatabase -Recovery -Name Recovery33 -Server exchange -EdbFilePath F:\recovery\DB02.edb -LogFolderPath F:\recovery\
+
+---
+
+### Verify Database State (Before Mount)
+
+check database header status
+eseutil /MH F:\recovery\DB02.edb
+
+expected state
+State: Dirty Shutdown
+
+---
+
+### Perform Soft Recovery
+
+run soft recovery using log prefix
+eseutil /R E01 /l F:\recovery\ /d F:\recovery\
+
+---
+
+### Verify Database State (After Recovery)
+
+check database header again
+eseutil /MH F:\recovery\DB02.edb
+
+expected state
+State: Clean Shutdown
+
+---
+
+### Mount Recovery Database
+
+mount the recovery database
+Mount-Database Recovery33
+
+---
+
+### Verify Recovery Database
+
+check database status
+Get-MailboxDatabase -Status | ft -AutoSize
+
+---
+
+Recovery mailbox database is now ready for mailbox restore operations

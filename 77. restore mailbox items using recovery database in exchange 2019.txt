@@ -1,0 +1,81 @@
+
+77. Restore Mailbox Items Using Recovery Database in Exchange Server 2019
+
+---
+topic is already expland in lesson 75
+
+Using Exchange Management Shell
+
+---
+
+### Prerequisites
+
+recovery mailbox database is already created and mounted
+example recovery database name: RDB01
+source mailbox exists inside recovery database
+target mailbox exists and is active
+
+---
+
+### Verify Recovery Database Is Mounted
+
+check recovery database status
+Get-MailboxDatabase -Status | ft Name,Mounted,Recovery -AutoSize
+
+---
+
+### List Mailboxes Inside Recovery Database
+
+display mailboxes stored in recovery database
+Get-MailboxStatistics -Database RDB01 | ft DisplayName,MailboxGuid -AutoSize
+
+---
+
+### Restore Mailbox Items from Recovery Database
+
+restore full mailbox content
+New-MailboxRestoreRequest -Name "Restore-User01" -SourceDatabase RDB01 -SourceStoreMailbox "user01" -TargetMailbox "user01"
+
+---
+
+### Restore Specific Folder Only (Example: Inbox)
+
+restore only inbox items
+New-MailboxRestoreRequest -Name "Restore-Inbox-User01" -SourceDatabase RDB01 -SourceStoreMailbox "user01" -TargetMailbox "user01" -IncludeFolders "#Inbox#/"
+
+
+---
+
+### Restore Items to Target Folder (Optional)
+
+restore items into a specific folder in target mailbox
+New-MailboxRestoreRequest -Name "Restore-To-Folder" -SourceDatabase RDB01 -SourceStoreMailbox "user01" -TargetMailbox "user01" -TargetRootFolder "RecoveredItems"
+
+---
+
+### Check Restore Request Status
+
+check restore request
+Get-MailboxRestoreRequest
+
+check detailed status
+Get-MailboxRestoreRequestStatistics "Restore-User01"
+
+---
+
+
+
+### Dismount Recovery Database (After Restore)
+
+dismount recovery database
+Dismount-Database RDB01
+
+---
+### Remove Completed Restore Requests
+
+remove completed restore requests
+Get-MailboxRestoreRequest | Where Status -eq Completed | Remove-MailboxRestoreRequest
+
+---
+
+Mailbox items are now restored successfully from the recovery database

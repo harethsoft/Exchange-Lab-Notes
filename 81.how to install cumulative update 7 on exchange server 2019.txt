@@ -1,0 +1,94 @@
+
+81. how to install cumulative update 7 on exchange server 2019
+    current installed version is cumulative update 5
+
+---
+
+Using GUI and Exchange Management Shell
+
+---
+
+### Check current Exchange version
+
+open exchange management shell
+
+Get-ExchangeServer | fl Name,AdminDisplayVersion
+
+---
+
+### Pre-Installation Steps
+
+make sure windows server is fully updated
+take full backup of exchange server
+disable antivirus temporarily
+log in with exchange organization admin account
+restart the server before installation
+
+---
+
+### Prepare Active Directory for CU7
+
+extract cumulative update 7 files
+
+open command prompt as administrator
+go to CU7 folder
+
+prepare schema
+
+Setup.exe /PrepareSchema /IAcceptExchangeServerLicenseTerms
+
+prepare active directory
+
+Setup.exe /PrepareAD /IAcceptExchangeServerLicenseTerms
+
+prepare all domains
+
+Setup.exe /PrepareAllDomains /IAcceptExchangeServerLicenseTerms
+
+wait until each command completes successfully
+
+---
+
+### Install Cumulative Update 7
+
+right click Setup.exe
+run as administrator
+
+check for updates
+accept license terms
+select recommended settings
+
+wait until installation completes
+click finish
+
+restart the server
+
+---
+
+### Post-Installation Verification
+
+open exchange management shell
+
+check exchange services
+
+Get-Service *Exchange*
+
+verify exchange version
+
+Get-ExchangeServer | fl Name,AdminDisplayVersion
+
+open outlook on the web
+
+[https://mail.domain.com/owa](https://mail.domain.com/owa)
+
+send and receive test email
+
+---
+
+### Notes
+
+cumulative update is a full exchange installation
+you can upgrade directly from CU5 to CU7
+never install CU without backup
+
+---

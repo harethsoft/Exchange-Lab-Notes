@@ -1,0 +1,28 @@
+
+82. installing exchange 2019 management tools on windows 10
+
+---
+
+Using GUI and PowerShell
+
+---
+
+### Requirements
+
+windows 10 64 bit
+joined to domain
+same domain as exchange server
+logged in with domain admin or exchange admin account
+
+---
+
+### Install Required Windows Features
+1-we can install it usign gui as shown in 82.01
+2.install c++
+3.right click Setup.exe
+run as administrator
+
+check for updates
+accept license terms
+select recommended settings
+in server role selection :select Management tools as shown in 82.02

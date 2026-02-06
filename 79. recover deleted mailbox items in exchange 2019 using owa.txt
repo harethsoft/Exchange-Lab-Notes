@@ -1,0 +1,71 @@
+79. Recover Deleted Mailbox Items in Exchange Server 2019 Using OWA
+
+---
+
+Using Outlook on the Web (OWA)
+
+---
+
+### Scenario
+
+user deleted mailbox items
+items are still within deleted items retention period
+recovery will be done by the end user using OWA
+
+---
+
+### Step 1: Sign in to Outlook on the Web
+
+open web browser
+go to
+[https://mail.harethsoft.com/owa]
+
+sign in with user mailbox credentials
+
+---
+
+### Step 2: Open Deleted Items Folder
+
+from left pane
+click Deleted Items
+
+---
+
+### Step 3: Recover Deleted Items
+
+at the top of Deleted Items folder
+click Recover items deleted from this folder
+
+a new window will open showing recoverable items
+
+---
+
+### Step 4: Select Items to Recover
+
+select one or more deleted items
+or select Select all
+
+click Recover
+
+---
+
+### Step 5: Verify Recovered Items
+
+close recovery window
+go back to Deleted Items folder
+
+recovered items will be restored
+original location if available
+or Deleted Items folder
+
+---
+
+### Notes
+
+items can be recovered only within retention period
+after retention expires items are permanently deleted
+no Exchange Management Shell is required
+
+---
+
+Recover deleted mailbox items using OWA completed successfully

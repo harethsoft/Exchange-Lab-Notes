@@ -1,0 +1,54 @@
+78. Perform Dial Tone Recovery in Exchange Server 2019
+
+---
+
+Using Exchange Management Shell
+
+---
+
+### Scenario
+
+mailbox database failed
+users must continue sending and receiving emails
+temporary dial tone database will be used
+original database will be restored later
+
+---
+
+### Step 1: Dismount Failed Mailbox Database
+
+dismount the failed database
+Dismount-Database DB01
+
+---
+
+### Step 2: Rename Original Database Files
+
+go to database path and rename files
+
+example
+DB01.edb  ? DB01.edb.old
+E01.log files ? keep in same location
+
+---
+
+### Step 3: Create Dial Tone Database
+
+create empty dial tone database with same name
+New-MailboxDatabase -Name DTB01-Server exchange -EdbFilePath F:\DTB01\DTB01.edb -LogFolderPath F:\DTB01\
+
+---
+
+move mail box from correpted database to created database
+get-mailbox -database db01 | set-mailbox -database DTB01
+
+
+### Step 4: Mount Dial Tone Database
+
+mount dial tone database
+Mount-Database DTB01
+
+---
+
+
+Dial tone recovery completed successfully

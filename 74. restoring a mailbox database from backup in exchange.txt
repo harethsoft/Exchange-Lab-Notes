@@ -1,0 +1,104 @@
+74. Restoring a Mailbox Database from Backup in Exchange Server 2019
+
+
+
+---
+
+
+
+Using Exchange Management Shell and Windows Server Backup
+
+
+
+first dismount the mailbox database
+
+Dismount-Database DB02
+
+
+
+simulate database failure
+
+go to F drive
+
+delete the database file DB02.edb
+
+
+
+open Windows Server Backup
+
+click on Recover
+
+
+
+select This server
+
+click Next
+
+(snapshot 74.01)
+
+
+
+select the backup date
+
+select Recover drive
+
+click Next
+
+(snapshot 74.02)
+
+
+
+select recovery type
+
+Application
+
+click Next
+
+(snapshot 74.03)
+
+
+
+select application
+
+Exchange
+
+click Next
+
+(snapshot 74.04)
+
+
+
+select recovery option
+
+Recover to original location
+
+click Next
+
+(snapshot 74.05)
+
+
+
+click Recover
+
+(snapshot 74.06)
+
+
+
+after recovery is completed
+
+mount the mailbox database
+
+Mount-Database DB02
+
+
+
+verify database status
+
+Get-MailboxDatabase DB02 | fl Name,Mounted
+
+
+
+verify mailboxes
+
+Get-MailboxStatistics -Database DB02
+

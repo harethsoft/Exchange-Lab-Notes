@@ -1,0 +1,139 @@
+75. Restore a Mailbox Using Recovery Database in Exchange Server 2019
+
+---
+
+Using Exchange Management Shell and Windows Server Backup
+
+---
+
+### Preparation (User Side)
+
+sign in to Outlook on the web with admin mailbox
+delete emails from Inbox
+delete emails from Sent Items
+empty Deleted Items
+empty Recover Deleted Items
+sign out from Outlook on the web
+
+---
+
+### Restore Database Files Using Windows Server Backup
+
+open Windows Server Backup
+click Recover
+
+on Getting Started
+select This server
+click Next
+(snapshot 75.01)
+
+select backup date
+click Next
+(snapshot 75.02)
+
+select recovery type
+File and folders
+click Next
+(snapshot 75.03)
+
+select items to recover
+select mailbox database and log files
+click Next
+(snapshot 75.04)
+
+specify recovery options
+recover to original location
+click Next
+(snapshot 75.05)
+
+click Recover
+wait until recovery completes
+click Close
+
+now mailbox database and log files are restored to disk
+
+---
+
+### Verify Database State
+
+check database header state
+eseutil /MH "F:\rdp02\DB02.edb"
+(snapshot 75.06)
+
+result
+State : Dirty Shutdown
+
+---
+
+### Problem Faced
+
+database was in Dirty Shutdown state
+database cannot be mounted until logs are replayed
+
+---
+
+### Solution (Soft Recovery)
+
+verify database file exists
+Test-Path "F:\rdp02\DB02.edb"
+
+verify log files and prefix
+log prefix found : E01
+
+perform soft recovery
+eseutil /R E01 /l "F:\rdp02" /d "F:\rdp02"
+(snapshot 75.07 , 75.08)
+
+verify database state again
+eseutil /MH "F:\rdp02\DB02.edb"
+(snapshot 75.09)
+
+result
+State : Clean Shutdown
+
+---
+
+### Create Recovery Database
+
+create recovery mailbox database
+New-MailboxDatabase -Recovery -Name RDB02 -Server exchange -EdbFilePath F:\rdb02\DB02.edb -LogFolderPath F:\rdb02\
+(snapshot 75.10)
+
+mount recovery database
+Mount-Database RDB02
+
+verify database
+Get-MailboxDatabase RDB02 | fl Name,Mounted
+
+---
+
+### View Mailboxes in Recovery Database
+
+Get-MailboxStatistics -Database RDB02 | ft -AutoSize
+
+---
+
+### Restore Mailbox Data
+
+restore admin mailbox data
+New-MailboxRestoreRequest -Name "Admin-Recovery" -SourceDatabase RDB02 -SourceStoreMailbox "exadmin" -TargetMailbox "exadmin"
+
+check restore request
+Get-MailboxRestoreRequest
+
+remove completed restore requests
+Get-MailboxRestoreRequest | where Status -eq Completed | Remove-MailboxRestoreRequest
+
+---
+
+### Cleanup
+
+dismount recovery database
+Dismount-Database RDB02
+
+---
+
+### Verification
+
+sign in to Outlook
+verify recovered emails are restored successfully
