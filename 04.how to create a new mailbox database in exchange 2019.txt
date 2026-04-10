@@ -13,7 +13,7 @@ Select mailbox server (exchange)
 Specify database file path
 Specify log file path
 Click Save
-
+restart service (microsoft information store)
 ---
 
 Using Exchange Management Shell
