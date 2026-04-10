@@ -18,9 +18,9 @@ restart service (microsoft information store)
 
 Using Exchange Management Shell
 
-New-MailboxDatabase -Name db02 -Server exchange -EdbFilePath D:\db02\db02.edb -LogFolderPath D:\db02
+New-MailboxDatabase -Name db03 -Server exchange -EdbFilePath G:\db03\db02.edb -LogFolderPath G:\db03
 
-Mount-Database -Identity db02
+Mount-Database -Identity db03
 
 Get-MailboxDatabase | fl Name,Server,EdbFilePath,LogFolderPath
 
