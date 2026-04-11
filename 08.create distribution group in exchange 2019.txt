@@ -14,8 +14,19 @@ Click Save
 
 Using Exchange Management Shell
 
-New-DistributionGroup -Name "SalesTeam" -Alias "salesteam" -Type Distribution
+```
+New-DistributionGroup `
+-Name "hrusers3" `
+-Alias "hrusers3" `
+-Type Distribution `
+-OrganizationalUnit "harethsoft.lan/maddina/hr" `
+-ManagedBy "administrator@harethsoft.lan" `
+-MemberJoinRestriction Closed `
+-MemberDepartRestriction Closed
 
+Add-DistributionGroupMember -Identity "hrusers3" -Member "hr1@harethsoft.lan"
+Add-DistributionGroupMember -Identity "hrusers3" -Member "hr2@harethsoft.lan"
+```
 Verify the group
 
-Get-DistributionGroup "SalesTeam" | fl Name,Alias,Members
+Get-DistributionGroup "hrusers3" | fl Name,Alias,Members
