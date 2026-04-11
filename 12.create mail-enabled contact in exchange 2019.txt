@@ -12,7 +12,14 @@ Click Save
 
 Using Exchange Management Shell
 
-New-MailContact -Name "John Doe" -ExternalEmailAddress "johndoe@gmail.com" -Alias "johndoe"
+New-MailContact `
+-FirstName "Khaled" `
+-LastName "Ali" `
+-Name "Khaled Ali" `
+-DisplayName "Khaled Ali" `
+-Alias "khaled.ali" `
+-ExternalEmailAddress "khaled.ali@gmail.com" `
+-OrganizationalUnit "harethsoft.lan/Maddina/contacts"
 
 
-Get-MailContact johndoe | fl Name,Alias,ExternalEmailAddress
+Get-MailContact khaled.ali | fl Name,Alias,ExternalEmailAddress
