@@ -16,9 +16,12 @@ Apply the policy to update recipients
 ---
 
 Using Exchange Management Shell
-New-EmailAddressPolicy -Name "DefaultPolicy" -IncludedRecipients AllRecipients -EnabledPrimarySMTPAddressTemplate "%g.%s@harethsoft2.com"
+New-EmailAddressPolicy `
+-Name "MylabAddressPolicy" `
+-IncludedRecipients AllRecipients `
+-EnabledEmailAddressTemplates "SMTP:%s.%g@harethsoft.lan" `
+-Priority 1
 
-
-Update-EmailAddressPolicy "DefaultPolicy"
+Update-EmailAddressPolicy -Identity "MylabAddressPolicy"
 
 Get-EmailAddressPolicy | fl Name,EnabledPrimarySMTPAddressTemplate,IncludedRecipients
