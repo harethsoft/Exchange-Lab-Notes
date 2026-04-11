@@ -22,9 +22,11 @@ New-Mailbox -Name "User01" `
 -Alias user01 `
 -OrganizationalUnit "Users" `
 -Password (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force)
+-Database "db03"
 
 Verify mailbox
 
 Get-Mailbox user01
+Get-Mailbox -Identity "saleh" | Select-Object name,database
 updated
 
