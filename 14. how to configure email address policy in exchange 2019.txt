@@ -22,6 +22,11 @@ New-EmailAddressPolicy `
 -EnabledEmailAddressTemplates "SMTP:%s.%g@harethsoft.lan" `
 -Priority 1
 
+
+%g = First name (Given name)
+%s = Last name (Surname)
+نتيجة = Smith.John@harethsoft.lan
+
 Update-EmailAddressPolicy -Identity "MylabAddressPolicy"
 
 Get-EmailAddressPolicy | fl Name,EnabledPrimarySMTPAddressTemplate,IncludedRecipients
