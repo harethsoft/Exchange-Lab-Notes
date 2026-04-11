@@ -20,3 +20,72 @@ New-AcceptedDomain `
 -DomainType Authoritative
 
 Get-AcceptedDomain | fl Name,DomainName,DomainType
+
+
+
+
+
+DNS Configuration Summary for Exchange Server
+=============================================
+
+DC Server        : DC.harethsoft.lan
+DC IP Address    : 192.168.8.105
+Exchange Server  : exchange.harethsoft.com
+Exchange IP      : 192.168.8.116
+
+DNS Zones Created
+-----------------
+Forward Lookup Zone : harethsoft.com
+
+DNS Records Created
+-------------------
+A Record   : exchange.harethsoft.com > 192.168.8.116
+MX Record  : harethsoft.com > exchange.harethsoft.com (Priority 10)
+
+Verification
+------------
+nslookup harethsoft.com         > Resolved Successfully
+nslookup exchange.harethsoft.com > Resolved to 192.168.8.116
+
+Status : DNS Configuration Completed Successfully
+
+
+
+
+
+
+DNS Configuration Steps for Exchange Server
+===========================================
+
+Step 1 - Open DNS Manager
+--------------------------
+Start > Administrative Tools > DNS
+
+Step 2 - Create Forward Lookup Zone
+-------------------------------------
+1. Right click on Forward Lookup Zones
+2. Select New Zone
+3. Select Primary Zone
+4. Enter zone name : harethsoft.com
+5. Click Next until Finish
+
+Step 3 - Create A Record
+-------------------------
+1. Open zone harethsoft.com
+2. Right click > New Host (A)
+3. Name    : exchange
+4. IP      : 192.168.8.116
+5. Click Add Host
+
+Step 4 - Create MX Record
+--------------------------
+1. Right click on zone harethsoft.com
+2. Select New Mail Exchanger (MX)
+3. Mail Server : exchange.harethsoft.com
+4. Priority    : 10
+5. Click OK
+
+Step 5 - Verification
+----------------------
+nslookup harethsoft.com          > Should return DC IP
+nslookup exchange.harethsoft.com > Should return 192.168.8.116
