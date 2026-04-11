@@ -12,9 +12,21 @@ Click Save
 
 Using Exchange Management Shell
 
-New-Mailbox -Shared -Name "Support" -Alias "support" -PrimarySmtpAddress "support@harethsoft.com"
+```
+New-Mailbox `
+-Shared `
+-Name "General Information2" `
+-Alias "contact2" `
+-OrganizationalUnit "harethsoft.lan/Maddina/IT-Support" `
+-Database "DB01"
 
+Add-MailboxPermission -Identity "contact2" -User "it1@harethsoft.lan" -AccessRights FullAccess
+Add-MailboxPermission -Identity "contact2" -User "it2@harethsoft.lan" -AccessRights FullAccess
+
+Add-MailboxPermission -Identity "contact2" -User "it1@harethsoft.lan" -AccessRights SendAs
+Add-MailboxPermission -Identity "contact2" -User "it2@harethsoft.lan" -AccessRights SendAs
+```
 
 Verify the shared mailbox
 
-Get-Mailbox "Support" | fl Name,Alias,PrimarySmtpAddress,RecipientTypeDetails
+Get-Mailbox "contact2" | fl Name,Alias,PrimarySmtpAddress,RecipientTypeDetails
