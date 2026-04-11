@@ -13,30 +13,30 @@ Click Save
 
 Using Exchange Management Shell
 # Create Room Mailbox
-New-Mailbox -Room `
--Name "Room01" `                                          # Room display name
--Alias "Room01" `                                         # Email alias
--Database "MailboxDatabase01" `                           # Mailbox database
+New-Mailbox -Room 
+-Name "Room01"                                          # Room display name
+-Alias "Room01"                                          # Email alias
+-Database "MailboxDatabase01"                            # Mailbox database
 -OrganizationalUnit "harethsoft.lan/Maddina/resources"    # OU location
 
 # Set Mailbox Properties
-Set-Mailbox -Identity "Room01" `
--ResourceCapacity 10 `                                    # Maximum number of people in the room
--DisplayName "Room01" `                                   # Name shown in Outlook
+Set-Mailbox -Identity "Room01" 
+-ResourceCapacity 10                                     # Maximum number of people in the room
+-DisplayName "Room01"                                    # Name shown in Outlook
 -EmailAddresses "Room01@harethsoft.com"                   # Room email address
 
 # Set Calendar Processing
-Set-CalendarProcessing -Identity "Room01" `
--AutomateProcessing AutoUpdate `                          # Requires manual approval
--BookingWindowInDays 180 `                                # Maximum days in advance to book
--MaximumDurationInMinutes 480 `                           # Maximum booking duration (8 hours)
--AllowConflicts $false `                                  # Do not allow overlapping bookings
--EnforceSchedulingHorizon $true `                         # Enforce booking window limit
--DeleteComments $false `                                  # Keep meeting comments
--DeleteSubject $false `                                   # Keep meeting subject
--AddOrganizerToSubject $true `                            # Add organizer name to subject
--AllBookInPolicy $false `                                 # No one can book without approval
--AllRequestOutOfPolicy $true `                            # All requests require approval
+Set-CalendarProcessing -Identity "Room01" 
+-AutomateProcessing AutoUpdate                         # Requires manual approval
+-BookingWindowInDays 180                                # Maximum days in advance to book
+-MaximumDurationInMinutes 480                            # Maximum booking duration (8 hours)
+-AllowConflicts $false                                  # Do not allow overlapping bookings
+-EnforceSchedulingHorizon $true                         # Enforce booking window limit
+-DeleteComments $false                                   # Keep meeting comments
+-DeleteSubject $false                                    # Keep meeting subject
+-AddOrganizerToSubject $true                             # Add organizer name to subject
+-AllBookInPolicy $false                                  # No one can book without approval
+-AllRequestOutOfPolicy $true                            # All requests require approval
 -ResourceDelegates "administrator@harethsoft.com"         # Delegate who approves or rejects
 
 
