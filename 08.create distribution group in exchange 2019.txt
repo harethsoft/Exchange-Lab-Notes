@@ -29,4 +29,6 @@ Add-DistributionGroupMember -Identity "hrusers3" -Member "hr2@harethsoft.lan"
 ```
 Verify the group
 
-Get-DistributionGroup "hrusers3" | fl Name,Alias,Members
+Get-DistributionGroup "hrusers3" | fl Name, Alias
+
+Get-DistributionGroupMember -Identity "hrusers3" | fl Name, RecipientType
