@@ -15,7 +15,15 @@ Click Save
 
 Using Exchange Management Shell
 
-New-MailUser -Name "Ali Ali" -UserPrincipalName "ali.ali@harethsoft.com" -Alias "ali.ali" -ExternalEmailAddress "ali@ext.com" -Password (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force)
+New-MailUser `
+-FirstName "Najee" `
+-LastName "Saad" `
+-Name "Najee Saad" `
+-DisplayName "Najee Saad" `
+-Alias "Najee" `
+-ExternalEmailAddress "najee.saad@hotmail.com" `
+-UserPrincipalName "najee.saad@harethsoft.lan" `
+-OrganizationalUnit "harethsoft.lan/Maddina/contacts" `
+-Password (ConvertTo-SecureString 'P@ssw0rd' -AsPlainText -Force)
 
-
-Get-MailUser ali.ali | fl Name,Alias,ExternalEmailAddress,UserPrincipalName
+Get-MailUser najee.saad | fl Name,Alias,ExternalEmailAddress,UserPrincipalName
