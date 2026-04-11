@@ -13,7 +13,7 @@ Click Save
 
 Using Exchange Management Shell
 
-New-Mailbox -Room -Name "Room01" -Alias "Room01"
+New-Mailbox -Room -Name "Room01" -Alias "Room01" -Database "db01" -OrganizationalUnit "harethsoft.lan/Maddina/resources"
 New-Mailbox -Equipment -Name "Equipment01" -Alias "Equipment01"
 
 Verify mailbox
@@ -22,5 +22,3 @@ Get-Mailbox Room01
 Get-Mailbox Equipment01
 
 ---
-
-
