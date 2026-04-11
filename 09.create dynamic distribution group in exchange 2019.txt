@@ -13,8 +13,20 @@ Click Save
 
 Using Exchange Management Shell
 
-New-DynamicDistributionGroup -Name "AllSales" -Alias "allsales" -RecipientFilter {Department -eq "Sales"}
+
+
+New-DynamicDistributionGroup `
+-Name "MaddinaUsers2" `
+-Alias "MaddinaUsers2" `
+-OrganizationalUnit "harethsoft.lan/Maddina" `
+-IncludedRecipients MailboxUsers `
+-RecipientContainer "harethsoft.lan/Maddina"
+
+Set-DynamicDistributionGroup `
+-Identity "MaddinaUsers2" `
+-ManagedBy "administrator@harethsoft.lan"
+
 
 Verify the group
 
-Get-DynamicDistributionGroup "AllSales" | fl Name,Alias,RecipientFilter
+Get-DynamicDistributionGroup "MaddinaUsers" | fl Name,Alias,RecipientFilter
