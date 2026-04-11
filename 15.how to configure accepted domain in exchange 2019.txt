@@ -14,5 +14,9 @@ Click Save
 Using Exchange Management Shell
 
 Get-AcceptedDomain
-New-AcceptedDomain -Name "Harethsoft3" -DomainName "harethsoft3.com" -DomainType Authoritative
+New-AcceptedDomain `
+-Name "harethsoft" `
+-DomainName "harethsoft.com" `
+-DomainType Authoritative
+
 Get-AcceptedDomain | fl Name,DomainName,DomainType
