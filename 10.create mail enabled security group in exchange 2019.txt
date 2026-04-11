@@ -13,8 +13,17 @@ Click Save
 
 Using Exchange Management Shell
 
-New-DistributionGroup -Name "HR_Security" -Alias "hr_security" -Type Security -MemberJoinRestriction Open -MemberDepartRestriction Open
+New-DistributionGroup `
+-Name "IT-Support2" `
+-Alias "IT-Support2" `
+-Type Security `
+-OrganizationalUnit "harethsoft.lan/Maddina/IT-Support" `
+-ManagedBy "administrator@harethsoft.lan" `
+-MemberJoinRestriction Closed `
+-MemberDepartRestriction Closed
 
+Add-DistributionGroupMember -Identity "IT-Support2" -Member "it1@harethsoft.lan"
+Add-DistributionGroupMember -Identity "IT-Support2" -Member "it2@harethsoft.lan"
 Verify the group
 
 Get-DistributionGroup "HR_Security" | fl Name,Alias,Members,RecipientType
