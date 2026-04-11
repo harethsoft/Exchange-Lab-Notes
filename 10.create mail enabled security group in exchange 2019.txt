@@ -26,4 +26,6 @@ Add-DistributionGroupMember -Identity "IT-Support2" -Member "it1@harethsoft.lan"
 Add-DistributionGroupMember -Identity "IT-Support2" -Member "it2@harethsoft.lan"
 Verify the group
 
-Get-DistributionGroup "IT-Support2" | fl Name,Alias,Members,RecipientType
+Get-DistributionGroup "IT-Support2" | fl Name, Alias, RecipientType
+
+Get-DistributionGroupMember -Identity "IT-Support2" | fl Name, RecipientType
