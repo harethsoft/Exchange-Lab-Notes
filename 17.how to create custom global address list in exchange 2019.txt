@@ -25,3 +25,9 @@ ForEach-Object { Set-ADUser $_ -Company "harethsoft" }
 Get-ADUser -Filter {company -eq "harethsoft"} | Select Name,UserPrincipalName,Company
 
 
+
+Get-ADUser -Filter {company -eq "harethsoft"} | fl userprincipalname
+Get-ADUser -Filter * -Properties Company | Where-Object {$_.Company -eq "harethsoft"} | Select-Object Name, Company
+
+Get-ADUser -Filter * -Properties Company | Where-Object {[string]::IsNullOrEmpty($_.Company)} | Set-ADUser -Company "harethsoft"
+
