@@ -12,7 +12,7 @@ Get-OfflineAddressBook | fl Name,AddressLists
 
 
 then we use exchange admin center
-to assign newoffline address book to the mailbox database
+to assign new offline address book to the mailbox database
 click on servers section 
 click on databases tab
 select the mail box database 
