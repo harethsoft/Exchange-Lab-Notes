@@ -7,6 +7,9 @@ Click on Organization
 Click on Address Lists
 Click +
 Enter name for the user address list
+select only the following recepipent types
+then select users with exchange mailboxes
+then add rule (receipient container) and select the container
 Click Save
 
 Click + again
