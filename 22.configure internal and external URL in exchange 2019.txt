@@ -5,6 +5,7 @@ Using Exchange Admin Center
 Open Exchange Admin Center
 Click on Servers
 Click on Virtual Directories
+add virtual directory for harethsoft.com
 Select a virtual directory example OWA
 Click Edit
 Set Internal URL
