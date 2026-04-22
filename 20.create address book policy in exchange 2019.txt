@@ -18,15 +18,15 @@ Click Save
 
 Now the user address list and room list are created and ready to be used in an address book policy
 
+
+
+Get-GlobalAddressList     	GAL             harethsoft GAL
+Get-OfflineAddressBook		OAB		harethsoft OAB	
+
+Address list					harethsoft-users
+Room list					harethsoft-roomlist
+
 Using Exchange Management Shell
-
-Get-GlobalAddressList
-Get-OfflineAddressBook
-
-GAL name harethsoft GAL
-OAB name harethsoft OAB
-Address list name harethsoft-users
-Room list name harethsoft-roomlist
 
 New-AddressBookPolicy -Name "harethsoft ABP" -GlobalAddressList "harethsoft GAL" -RoomList "harethsoft-roomlist" -AddressLists "harethsoft-users" -OfflineAddressBook "harethsoft OAB"
 Get-AddressBookPolicy "harethsoft ABP"
