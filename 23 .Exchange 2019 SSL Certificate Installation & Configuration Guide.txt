@@ -1,0 +1,65 @@
+### **Exchange 2019 SSL Certificate Installation & Configuration Guide**
+
+This guide provides a structured, step-by-step technical walkthrough for creating and deploying a local SSL certificate for Exchange Server 2019 using an internal Certificate Authority (CA), based on the provided source.
+
+---
+
+### **I. Installing Active Directory Certificate Services (AD CS)**
+*Perform these steps on your Domain Controller (e.g., DC1).*
+
+1.  **Add Roles:** In Server Manager, go to **Manage > Add Roles and Features**.
+2.  **Select Services:** Choose **Active Directory Certificate Services**.
+3.  **Role Services:** Select **Certification Authority** and **Certification Authority Web Enrollment**.
+4.  **Configure CA:**
+    *   Select **Enterprise CA** and **Root CA**.
+    *   **Private Key:** Create a new private key using **SHA256** with a 2048-bit key length.
+    *   **Validity:** Set the validity period (e.g., **5 years**).
+5.  **Verification:** Confirm the setup by browsing to `http://<Your-DC-Name>/certsrv`.
+
+---
+
+### **II. Distributing the Root Certificate via Group Policy (GPO)**
+*This ensures all computers in the network trust your local CA.*
+
+1.  **Download Certificate:** Access the CA web enrollment page, click **Download a CA certificate**, and save the file.
+2.  **Edit GPO:** Open **Group Policy Management** and edit the **Default Domain Policy**.
+3.  **Path:** Navigate to: `Computer Configuration > Policies > Windows Settings > Security Settings > Public Key Policies > Trusted Root Certification Authorities`.
+4.  **Import:** Right-click and **Import** the downloaded CA certificate.
+5.  **Apply:** Run `gpupdate /force` on your client machines and servers to update the policy.
+
+---
+
+### **III. Generating a Certificate Signing Request (CSR)**
+*Perform these steps on your Exchange Server (e.g., MS1).*
+
+1.  **Shared Folder:** Create a folder (e.g., `C:\certs`) and share it with **Full Control** permissions for the Administrator and System accounts.
+2.  **Exchange Management Shell (EMS):** Run EMS as an administrator.
+3.  **Create Request:** Use the `New-ExchangeCertificate` command to generate a request.
+    *   *Note: Ensure the subject name and domain names match your internal environment (e.g., `itskillup.online`)*.
+4.  **Export CSR:** Export the request to a `.req` file in your shared folder using the `Export-ExchangeCertificate` command.
+
+---
+
+### **IV. Issuing and Importing the SSL Certificate**
+
+1.  **Submit Request:** 
+    *   Open the `.req` file, copy all the text, and go to `http://<Your-DC-Name>/certsrv`.
+    *   Select **Request a certificate > Advanced certificate request**.
+    *   Paste the text into the box and select **Web Server** as the Certificate Template.
+2.  **Download:** Download the issued certificate and save it to your shared folder.
+3.  **Complete Request:** In EMS, use the `Import-ExchangeCertificate` command to point to the new certificate file. This will generate a **Thumbprint**.
+
+---
+
+### **V. Assigning Services and Finalizing**
+
+1.  **Enable Services:** Use the `Enable-ExchangeCertificate` command with the generated **Thumbprint** to assign the certificate to **IIS** services.
+2.  **Restart IIS:** Run the command `iisreset` to apply the changes to the web services.
+3.  **Verification:**
+    *   Open a browser and navigate to your OWA URL (e.g., `https://ms1.itskillup.online/owa`).
+    *   The browser should now show a **secure lock icon**, indicating a valid certificate issued by your trusted internal authority.
+
+---
+
+**Crucial Note:** This local certificate will only work on devices joined to your network that have received the Root CA certificate through the Group Policy update.
+
