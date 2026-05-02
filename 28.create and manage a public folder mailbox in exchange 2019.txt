@@ -15,18 +15,11 @@ Using Exchange Management Shell
 
 Create Public Folder Mailbox
 
-New-Mailbox -PublicFolder -Name "PFMailbox01"
+New-Mailbox -PublicFolder -Name "Hsoft-pf02"
 
 Verify
 
-Get-Mailbox -PublicFolder
+Get-Mailbox -PublicFolder | fl name,servername,isrootpublicfoldermailbox
 
 
 
-Access Public Folder from Outlook
-
-Open Outlook
-Folder pane
-Right click **Folders**
-Add public folder
-Select required public folder
