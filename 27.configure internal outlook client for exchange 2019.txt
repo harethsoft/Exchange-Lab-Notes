@@ -1,20 +1,48 @@
-27. Configure Internal Outlook Client for Exchange Server 2019
+### **Exchange 2019 Internal Outlook Client Configuration Guide**
 
-
-Configure Outlook (Internal Client)
-
-Open Control Panel
-Mail
-Show Profiles
-Add
-Enter user email and password
-Finish
+This guide provides a structured, step-by-step walkthrough for connecting an internal Microsoft Outlook client to an Exchange Server 2019 environment using the **Auto Discover** service.
 
 ---
 
-Verify Outlook Connection
+### **I. Environment & Prerequisites**
+*   **Exchange Server:** Exchange 2019 (e.g., `EX19-MBX01`) with a functional mailbox role.
+*   **Client Machine:** A Windows 10 computer joined to the Active Directory domain (e.g., `maldit.local`).
+*   **User Account:** You must be logged into the client machine using the credentials of the Active Directory user whose mailbox you wish to configure (e.g., `bharat.sharma`).
+*   **Software:** Microsoft Outlook (e.g., version 2013 or newer) installed on the client.
 
-Ctrl + Right click Outlook icon
-Connection Status
-Protocol: HTTPS
-Server: exchange.harethsoft2.com
+---
+
+### **II. Automatic Configuration (Auto Discover)**
+The **Auto Discover** service is the primary and easiest method for connecting internal clients.
+
+1.  **Launch Outlook:** Open the Outlook application from the Start menu.
+2.  **Welcome Page:** Click **Next** to proceed to the "Add an Email Account" page.
+3.  **Account Addition:** Select **Yes** when asked if you want to add an email account and click **Next**.
+4.  **Automatic Detection:** The Auto Discover service will automatically populate the user’s **display name** and **email address** based on the current domain login. 
+    *   *Note: If Auto Discover is unavailable, you must select "Manual setup" to provide the server name and settings manually.*
+5.  **Service Search:** Click **Next**. Outlook will search for the server configuration settings.
+6.  **Finalize:** Once the "Congratulations" message appears, click **Finish** to complete the setup.
+
+---
+
+### **III. Mailbox Initialization**
+1.  **Profile Loading:** Outlook will start and begin loading the user's profile.
+2.  **Local Copy:** The system will set up a local copy of the user's mailbox on the client machine.
+3.  **Syncing:** Outlook will automatically sync existing emails from the Exchange server to the local client.
+
+---
+
+### **IV. Verification & Testing**
+To ensure the connection is fully functional, perform the following tests:
+
+1.  **Inbound Test:** 
+    *   Send a test email from another account (e.g., the Administrator using OWA) to the user.
+    *   On the client, click **Send/Receive All Folders** to verify the message arrives in the inbox.
+2.  **Outbound Test:** 
+    *   Compose a **New Email** from the Outlook client and send it to an internal recipient.
+    *   Check the **Sent Items** folder to confirm it was sent successfully.
+3.  **Receipts (Optional):** You can request a **Delivery Receipt** or **Read Receipt** from the "Options" tab in Outlook to confirm the message reached its destination.
+4.  **Admin Check:** Verify the arrival of the test email in the recipient's mailbox (e.g., via the Exchange Management Center or OWA).
+
+---
+
