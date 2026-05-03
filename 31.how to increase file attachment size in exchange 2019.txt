@@ -18,13 +18,13 @@ This guide provides a structured, step-by-step technical walkthrough for increas
 Before making changes, use the Exchange Management Shell (EMS) to identify where the current limits are applied.
 
 1.  **Transport Configuration:** Check the organization-wide limits.
-    *   `Get-TransportConfig | Format-List MaxSendSize, MaxReceiveSize`.
+    *   Get-TransportConfig | Format-List MaxSendSize, MaxReceiveSize
 2.  **Receive Connectors:** Check individual connector limits (often default to 36 MB).
-    *   `Get-ReceiveConnector | Format-List Name, MaximumMessageSize`.
+    *   Get-ReceiveConnector | Select-Object Name, MaxMessageSize
 3.  **Send Connectors:** Check limits on outgoing connectors (if created).
-    *   `Get-SendConnector | Format-List Name, MaxMessageSize`.
+    *   Get-SendConnector | Format-List Name, MaxMessageSize
 4.  **User Mailbox:** Check if a specific user has custom limits.
-    *   `Get-Mailbox -Identity "User_Name" | Format-List Name, MaxSendSize, MaxReceiveSize`.
+    *   Get-Mailbox -Identity "it1" | Format-List Name, MaxSendSize, MaxReceiveSize
 
 ---
 
