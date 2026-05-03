@@ -25,15 +25,9 @@ using
 ### Using Exchange Management Shell
 
 Enable forwarding to another mailbox
-Set-Mailbox user01 -ForwardingAddress user02 -DeliverToMailboxAndForward $true
+Set-Mailbox user01 -ForwardingAddress saleh@harethsoft.lan -DeliverToMailboxAndForward $true
 
-Forward to external email address
-Set-Mailbox user01 -ForwardingSmtpAddress [user02@external.com](mailto:user02@external.com) -DeliverToMailboxAndForward $true
 
-Disable forwarding
-Set-Mailbox user01 -ForwardingAddress $null -ForwardingSmtpAddress $null
-
----
 
 ### Verify Forwarding Settings
 
