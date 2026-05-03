@@ -33,20 +33,19 @@ Set primary email address
 
 ### Using Exchange Management Shell
 
-Add new SMTP email address
-Set-Mailbox exadmin -EmailAddresses @{add="administrator@harethsoft.com"}
+# Add new SMTP email address
+Set-Mailbox exadmin -EmailAddresses @{add="administrator@harethsoft.lan"}
 
-Remove SMTP email address
-Set-Mailbox exadmin -EmailAddresses @{remove="administrator@harethsoft.com"}
+# Remove SMTP email address
+Set-Mailbox exadmin -EmailAddresses @{remove="administrator@harethsoft.lan"}
 
-Set primary SMTP address
-Set-Mailbox exadmin -PrimarySmtpAddress [exadmin@harethsoft.local]
+# Set primary SMTP address
+Set-Mailbox exadmin -PrimarySmtpAddress "exadmin@harethsoft.lan"
 
----
+# Verify Email Addresses
+Get-Mailbox exadmin | fl EmailAddresses, PrimarySmtpAddress
 
-### Verify Email Addresses
 
-Get-Mailbox exadmin| fl EmailAddresses,PrimarySmtpAddress
 
 ---
 
