@@ -24,13 +24,13 @@
 ### Using Exchange Management Shell
 
 Set message size limits for a specific mailbox
-Set-Mailbox user01 -MaxSendSize 25MB -MaxReceiveSize 25MB
+Set-Mailbox hr2 -MaxSendSize 25MB -MaxReceiveSize 25MB
 
 ---
 
 ### Verify Mailbox Message Size Limits
 
-Get-Mailbox exadmin| fl MaxSendSize,MaxReceiveSize
+Get-Mailbox hr2| fl MaxSendSize,MaxReceiveSize
 
 ---
 
