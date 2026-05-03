@@ -27,3 +27,5 @@ Get-OwaVirtualDirectory | fl name,identity,server
 
 Set-OwaVirtualDirectory "EXCHANGE\owa (Default Web Site)" -AllowOfflineOn NoComputer -Verbose
 Set-OwaVirtualDirectory "EXCHANGE\owa (Default Web Site)" -AllowOfflineOn allcomputers -Verbose
+to verify
+get-OwaVirtualDirectory "EXCHANGE\owa (Default Web Site)" | fl allowofflineon
