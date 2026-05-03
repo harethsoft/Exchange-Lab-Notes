@@ -34,7 +34,7 @@ Using the command line is more efficient for automation or managing multiple acc
 
 1.  **Open EMS:** Launch the Exchange Management Shell as an administrator.
 2.  **Run Set-Mailbox Command:** Use the `Set-Mailbox` cmdlet with the following syntax to apply custom quotas:
-    *   `Set-Mailbox -Identity "User_Name" -IssueWarningQuota 4GB -ProhibitSendQuota 4.5GB -ProhibitSendReceiveQuota 5GB -UseDatabaseQuotaDefaults $false`.
+    *  Set-Mailbox -Identity "ammar" -IssueWarningQuota 4GB -ProhibitSendQuota 4.5GB -ProhibitSendReceiveQuota 5GB -UseDatabaseQuotaDefaults $false
 3.  **Critical Switch:** You must set **`-UseDatabaseQuotaDefaults` to `$false`**; otherwise, the mailbox will continue to follow the global database limits instead of your custom values.
 
 ---
