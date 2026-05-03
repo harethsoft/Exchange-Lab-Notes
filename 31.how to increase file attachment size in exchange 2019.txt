@@ -46,7 +46,9 @@ Changes to transport settings require a restart of Exchange services to take eff
 
 1.  **Verify via EMS:** Run `Get-TransportConfig | Format-List MaxSendSize, MaxReceiveSize` to confirm the values have updated in the database.
 2.  **Restart Services:** In a test environment, you can restart all Exchange-related services via PowerShell:
-    *   `Get-Service | Where-Object { $_.DisplayName -notlike "*Hyper-V*" } | Restart-Service -Force`.
+
+      get-service *exchange*
+    * Get-Service *exchange* | Where-Object { $_.DisplayName -notlike "*Hyper-V*" } | Restart-Service -Force
 3.  **Production Note:** In a production environment, you should **schedule** the restart of the Exchange Server to avoid interrupting active mail flow.
 
 ---
