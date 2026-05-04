@@ -1,6 +1,56 @@
 
 ## 38. Configure Mailbox Database Limits in Exchange Server 2019
+### **Exchange 2019 Mailbox Database Limits & Retention Guide**
 
-### *
+This guide provides a structured, step-by-step technical walkthrough for configuring storage quotas and retention periods at the **database level** in Exchange Server 2019. Modifying these default settings ensures the environment meets organizational requirements for all mailboxes hosted within a specific database.
+
+---
+
+### **I. Understanding Database-Level Limits**
+While individual mailbox limits can be customized, configuring limits at the database level provides a **global policy** for every user in that database.
+*   **Storage Quotas:** Controls when users receive warnings or are blocked from sending/receiving email.
+*   **Retention Settings:** Determines how long deleted items and deleted mailboxes are kept before being permanently purged from the database.
+
+---
+
+### **II. Configuration via Exchange Admin Center (EAC)**
+This is the graphical method for modifying the default limits for all mailboxes in a database.
+
+1.  **Navigate:** Log in to the EAC, go to **Servers**, and select the **Databases** tab.
+2.  **Edit Database:** Select the target database (e.g., `Mailbox Database 01`) and click the **Edit icon** (pencil).
+3.  **Limits Tab:** Select the **Limits** tab to access the following settings:
+    *   **Issue warning at (GB):** The threshold for sending a warning to users (e.g., **4 GB**).
+    *   **Prohibit send at (GB):** The point where users can no longer send mail (e.g., **5 GB**).
+    *   **Prohibit send and receive at (GB):** The final limit where all mail flow stops for the user (e.g., **6 GB**).
+4.  **Retention Settings:** On the same tab, define the **Deleted item retention (days)** and **Deleted mailbox retention (days)**.
+5.  **Save:** Click **Save** to apply these defaults to all mailboxes using this database.
+
+---
+
+### **III. Configuration via Exchange Management Shell (EMS)**
+Using EMS allows for precise control and verification of database parameters.
+
+1.  **Set Storage Quotas:** Use the `Set-MailboxDatabase` cmdlet to update storage limits:
+    *   `Set-MailboxDatabase -Identity "Database_Name" -IssueWarningQuota 4GB -ProhibitSendQuota 5GB -ProhibitSendReceiveQuota 6GB`.
+2.  **Set Retention Periods:** You can also define how long deleted data is stored:
+    *   `Set-MailboxDatabase -Identity "Database_Name" -DeletedItemRetention 25.00:00:00 -MailboxRetention 40.00:00:00` (This sets items to 25 days and mailboxes to 40 days).
+
+---
+
+### **IV. Verification of Database Settings**
+It is critical to verify that the new limits are active to avoid database overgrowth.
+
+1.  **Check Current Values:** Run the following command to see the current retention and quota settings:
+    *   `Get-MailboxDatabase -Identity "Database_Name" | Format-List *retention*, *quota*`.
+2.  **Verify Output:** Ensure the output reflects your custom values, such as **DeletedItemRetention** (e.g., 25 days) and **ProhibitSendReceiveQuota** (e.g., 6 GB).
+
+---
+
+### **V. Summary of Key Settings**
+*   **Default Deleted Item Retention:** Typically 14 days.
+*   **Default Deleted Mailbox Retention:** Typically 30 days.
+*   **Impact:** Any mailbox set to "Use database quota defaults" will immediately follow these new rules.
+
+---
 
 
