@@ -16,28 +16,6 @@
 
 ---
 
-### Using Exchange Management Shell
-
-Create journaling rule for a specific mailbox
-
-New-JournalRule -Name "exadmin Journaling" -JournalEmailAddress journaling@harethsoft.local -Recipient exadmin@harethsoft.com -Scope Global
 
 ---
 
-### Verify Journaling Rule
-
-Get-JournalRule exadmin Journaling" | fl Name,Recipient,JournalEmailAddress,Scope,Enabled
-
----
-
-### Disable Journaling Rule (Optional)
-
-Disable-JournalRule "User01 Journaling"
-
----
-
-### Remove Journaling Rule (Optional)
-
-Remove-JournalRule "User01 Journaling"
-
----
