@@ -18,9 +18,7 @@ click save
 Using Exchange Management Shell
 
 hide mailbox from address lists
-Set-Mailbox jornaling -HiddenFromAddressListsEnabled $true
-
+Set-Mailbox -Identity saleh -HiddenFromAddressListsEnabled $true
 verify mailbox hidden status
-Get-Mailbox jornaling | fl HiddenFromAddressListsEnabled
-
+Get-Mailbox -Identity saleh | fl HiddenFromAddressListsEnabled
 ---
