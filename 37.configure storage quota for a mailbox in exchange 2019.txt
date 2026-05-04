@@ -1,41 +1,50 @@
 
 
 ## 37. Configure Storage Quota for a Mailbox in Exchange Server 2019
+### **Exchange 2019 Mailbox Storage Quota Configuration Guide**
+
+This guide provides a structured, step-by-step technical walkthrough for configuring storage quotas for individual mailboxes in Exchange Server 2019 using both the Exchange Admin Center (EAC) and the Exchange Management Shell (EMS).
 
 ---
 
-### Using Exchange Admin Center
-
-1. Open **Exchange Admin Center**
-2. Go to **Recipients**
-3. Click **Mailboxes**
-4. Select the mailbox
-5. Click **Edit** (??)
-6. Go to **Mailbox usage**
-7. Click **More options**
-8. Uncheck **Use the default quota settings**
-9. Configure the following:
-
-   * Issue warning at (GB)
-   * Prohibit send at (GB)
-   * Prohibit send and receive at (GB)
-10. Click **Save**
+### **I. Understanding Quota Types**
+Setting limits helps administrators **control database size** and plan for efficient maintenance, backups, and restores. There are three specific levels of quotas:
+*   **Issue Warning at:** The server sends a warning message to the user when they reach this limit.
+*   **Prohibit Send at:** Prevents the user from sending new messages and displays an error message.
+*   **Prohibit Send and Receive at:** Prevents the user from both sending and receiving new messages.
 
 ---
 
-### Using Exchange Management Shell
+### **II. Configuration via Exchange Admin Center (EAC)**
+This method is ideal for administrators who prefer a graphical interface for managing specific users.
 
-Set custom mailbox quota
-Set-Mailbox exadmin -UseDatabaseQuotaDefaults $false -IssueWarningQuota 8GB -ProhibitSendQuota 9GB -ProhibitSendReceiveQuota 10GB
-
-Use database default quota
-Set-Mailbox exadmin -UseDatabaseQuotaDefaults $true
+1.  **Access EAC:** Log in to the portal at `https://localhost/ecp`.
+2.  **Select Mailbox:** Navigate to the list of mailboxes and select the specific user you wish to modify.
+3.  **Edit Properties:** Click the **Edit icon** (pencil) to open the mailbox property page.
+4.  **Mailbox Usage:** Select the **Mailbox usage** tab and then click **More options**.
+5.  **Customize Settings:** Select the radio button for **"Customize the quota settings for this mailbox"**.
+    *   *Note: By default, mailboxes use the settings defined at the database level.*
+6.  **Enter Values:** Define your limits (e.g., **4 GB** for Warning, **4.5 GB** for Prohibit Send, and **5 GB** for Prohibit Send and Receive).
+7.  **Save:** Click **Save** to apply the customized limits.
 
 ---
 
-### Verify Mailbox Quota
+### **III. Configuration via Exchange Management Shell (EMS)**
+Using the command line is more efficient for automation or managing multiple accounts.
 
-Get-Mailbox user01 | fl UseDatabaseQuotaDefaults,IssueWarningQuota,ProhibitSendQuota,ProhibitSendReceiveQuota
+1.  **Open EMS:** Launch the Exchange Management Shell as an administrator.
+2.  **Run Set-Mailbox Command:** Use the `Set-Mailbox` cmdlet with the following syntax to apply custom quotas:
+    *  Set-Mailbox -Identity "ammar" -IssueWarningQuota 4GB -ProhibitSendQuota 4.5GB -ProhibitSendReceiveQuota 5GB -UseDatabaseQuotaDefaults $false
+3.  **Critical Switch:** You must set **`-UseDatabaseQuotaDefaults` to `$false`**; otherwise, the mailbox will continue to follow the global database limits instead of your custom values.
+
+---
+
+### **IV. Verification of Settings**
+After applying the changes, verify the configuration to ensure the limits are active.
+
+1.  **Verification Command:** Run the following command in EMS:
+    *   `Get-Mailbox -Identity "User_Name" | Format-List *quota*`.
+2.  **Check Output:** Confirm that the **ProhibitSendQuota**, **ProhibitSendReceiveQuota**, and **IssueWarningQuota** reflect the manual values you entered.
 
 ---
 
