@@ -17,5 +17,92 @@
 11. Click **Save**
 
 ---
+## Email Disclaimer في Exchange 2019
 
+---
+
+## ما هو؟
+
+هو **نص تلقائي** يضاف في نهاية أو بداية كل إيميل يخرج من المؤسسة تلقائياً بدون تدخل المستخدم.
+
+---
+
+## مثال على Disclaimer
+
+```
+This email and any attachments are confidential and intended 
+solely for the use of the named recipient.
+If you have received this email in error, please notify the 
+sender and delete it immediately.
+
+---
+شركة harethsoft | www.harethsoft.com
+هاتف: 0500000000
+```
+
+---
+
+## لماذا نستخدمه؟
+
+```
+1. الأسباب القانونية    = حماية الشركة قانونياً
+2. السرية               = تنبيه المستلم ان الإيميل سري
+3. الهوية المؤسسية      = إضافة شعار وبيانات الشركة
+4. الامتثال             = بعض الدول تلزم بوجوده
+```
+
+---
+
+## كيف يعمل في Exchange؟
+
+يعمل عن طريق **Transport Rule** يعني:
+
+```
+كل إيميل يمر على الـ Exchange
+         ↓
+Transport Rule تفحصه
+         ↓
+تضيف النص تلقائياً
+         ↓
+يصل للمستلم مع النص
+```
+
+---
+
+## طريقة الإنشاء
+
+**من Exchange Admin Center:**
+```
+Mail Flow
+> Rules
+> + New Rule
+> Apply disclaimers
+> اكتب النص
+> Save
+```
+
+**من PowerShell:**
+```powershell
+New-TransportRule "Company Disclaimer" `
+-ApplyToMessages SentToScope OutsideTheOrganization `
+-ApplyHtmlDisclaimerText "<p>This email is confidential.</p>" `
+-ApplyHtmlDisclaimerLocation Append `
+-ApplyHtmlDisclaimerFallbackAction Wrap
+```
+
+---
+
+## خيارات مهمة
+
+```
+Location:
+Append  = يضاف في نهاية الإيميل
+Prepend = يضاف في بداية الإيميل
+
+Scope:
+OutsideTheOrganization = للإيميلات الخارجية فقط
+All                    = لكل الإيميلات
+```
+
+تبي أنشئ واحد لشركتك؟ 👍
 
