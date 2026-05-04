@@ -18,15 +18,4 @@
 
 ---
 
-### Using Exchange Management Shell
 
-Create transport rule with disclaimer
-New-TransportRule -Name "Company Disclaimer" -FromScope InOrganization -ApplyHtmlDisclaimerText "<br><br>---<br>This email is confidential." -ApplyHtmlDisclaimerLocation Append -ApplyHtmlDisclaimerFallbackAction Wrap
-
----
-
-### Verify Disclaimer Rule
-
-Get-TransportRule "Company Disclaimer" | fl Name,State,ApplyHtmlDisclaimerText,ApplyHtmlDisclaimerLocation
-
----
