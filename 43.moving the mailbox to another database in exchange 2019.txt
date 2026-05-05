@@ -23,18 +23,3 @@ click on new
 
 ---
 
-Using Exchange Management Shell
-
-move mailbox to another database
-New-MoveRequest -Identity user01 -TargetDatabase DB02
-
-check move request status
-Get-MoveRequest user01
-
-check detailed move status
-Get-MoveRequestStatistics user01
-
-remove completed move request
-Remove-MoveRequest user01
-
----
