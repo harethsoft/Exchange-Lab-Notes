@@ -1,59 +1,64 @@
 47. Setting Up Mailbox Permissions in Exchange Server 2019
 
----
 
-Using Exchange Admin Center
+### **Exchange 2019 Mailbox Permissions Configuration Guide**
 
-open exchange admin center
-go to recipients
-click on mailboxes
-select the mailbox you want to manage
-click on edit icon
-go to mailbox delegation
-
-configure the following permissions
-
-Send As
-click +
-select the user
-click save
-
-Send on Behalf
-click +
-select the user
-click save
-
-Full Access
-click +
-select the user
-click save
-
-close and save settings
+This guide provides a structured, step-by-step technical walkthrough for setting up **Full Access** and **Send As** mailbox permissions using the Exchange Admin Center (EAC).
 
 ---
 
-Using Exchange Management Shell
-
-grant Full Access permission
-Add-MailboxPermission -Identity user01 -User user02 -AccessRights FullAccess
-
-grant Send As permission
-Add-RecipientPermission -Identity user01 -Trustee user02 -AccessRights SendAs
-
-grant Send on Behalf permission
-Set-Mailbox user01 -GrantSendOnBehalfTo user02
+### **I. Understanding Permission Types**
+There are three primary types of permissions that can be configured for a mailbox in Exchange 2019:
+*   **Full Access:** Allows a delegate to open the mailbox and perform almost all actions (read, delete, create meetings) **except sending email** as that mailbox.
+*   **Send As:** Allows a delegate to send emails that appear to originate directly from the mailbox owner.
+*   **Send on Behalf:** Allows a delegate to send mail "on behalf" of the owner (this is handled in a separate configuration).
 
 ---
 
-Verify mailbox permissions
-
-check Full Access
-Get-MailboxPermission user01
-
-check Send As
-Get-RecipientPermission user01
-
-check Send on Behalf
-Get-Mailbox user01 | fl GrantSendOnBehalfTo
+### **II. Assigning Full Access Permission**
+1.  **Access EAC:** Log in to the Exchange Admin Center (e.g., `https://localhost/ecp`).
+2.  **Navigate:** Go to **Recipients** and click the **Mailboxes** tab.
+3.  **Select Mailbox:** Choose the mailbox you want to assign permissions for and click the **Edit icon** (pencil).
+4.  **Delegation Tab:** On the properties page, select **Mailbox Delegation**.
+5.  **Add Delegate:** Scroll to the **Full Access** section and click the **plus sign (+)**.
+6.  **Select User:** Choose the user or group from the list, click **Add**, and then click **OK**.
+7.  **Save:** Click **Save** to apply the changes.
 
 ---
+
+### **III. Assigning Send As Permission**
+*Note: Granting Full Access does **not** automatically grant the right to send email as that user.*
+
+1.  **Navigate:** Within the same **Mailbox Delegation** tab of the chosen mailbox.
+2.  **Add Delegate:** Scroll to the **Send As** section and click the **plus sign (+)**.
+3.  **Select User:** Choose the user who needs sending rights, click **Add**, and click **OK**.
+4.  **Save:** Click **Save** to finalize.
+
+---
+
+### **IV. Managing Permissions in Bulk**
+If you need to assign permissions to multiple mailboxes simultaneously:
+1.  **Multi-Select:** In the mailbox list, use **Ctrl + Click** to select multiple individual mailboxes.
+2.  **Bulk Edit:** In the right-hand pane, scroll down and select **More options**, then click **Mailbox Delegation**.
+3.  **Add Permissions:** Click **Add** to configure permissions for all selected objects at once.
+
+---
+
+### **V. Verification & Testing (Outlook on the Web)**
+To verify that the permissions are working correctly, use **Outlook on the Web (OWA)**.
+
+**Testing Full Access:**
+1.  Log in to OWA as the **delegate** (the user who was granted permission).
+2.  Click the user icon in the top-right corner and select **Open another mailbox**.
+3.  Type the email address of the target mailbox and click **Open**.
+4.  **Verify Action:** Attempt to read or delete a message. If successful, Full Access is working.
+5.  **Verify Send Block:** Attempt to send a new mail from this window; if only Full Access is assigned, you will receive a notification that you **don't have permission to send**.
+
+**Testing Send As:**
+1.  With both **Full Access** and **Send As** assigned, open the target mailbox in OWA as described above.
+2.  Compose a **New Mail** and send it to a recipient.
+3.  **Verify Result:** The recipient should receive the mail, and it should appear as if it was sent by the **mailbox owner**, not the delegate.
+
+---
+
+
