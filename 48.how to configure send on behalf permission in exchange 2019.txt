@@ -1,41 +1,50 @@
 48. Configure Send on Behalf Permission in Exchange Server 2019
 
 ---
+### **Exchange 2019 Send on Behalf Permission Configuration Guide**
 
-Using Exchange Admin Center
-
-open exchange admin center
-go to recipients
-click on mailboxes
-select the mailbox you want to configure
-click on edit icon
-go to mailbox delegation
-under Send on Behalf
-click + icon
-select the user who will send on behalf
-click save
-close the settings
+This guide provides a structured, step-by-step technical walkthrough for configuring **Send on Behalf** permissions in Exchange Server 2019, based on the provided source.
 
 ---
 
-Using Exchange Management Shell
-
-assign Send on Behalf permission
-Set-Mailbox user01 -GrantSendOnBehalfTo user02
-
-assign Send on Behalf to multiple users
-Set-Mailbox user01 -GrantSendOnBehalfTo user02,user03
-
-add user without removing existing permissions
-Set-Mailbox user01 -GrantSendOnBehalfTo @{Add="user02"}
-
-remove Send on Behalf permission
-Set-Mailbox user01 -GrantSendOnBehalfTo @{Remove="user02"}
+### **I. Understanding "Send on Behalf" vs. "Send As"**
+While both permissions allow a delegate to send mail for another user, there is a key visual difference for the recipient:
+*   **Send As:** The recipient only sees the email address of the mailbox owner.
+*   **Send on Behalf:** The recipient sees **both** the email address of the actual sender (the delegate) and the email address of the mailbox owner.
 
 ---
 
-Verify Send on Behalf permission
-
-Get-Mailbox user01 | fl GrantSendOnBehalfTo
+### **II. Configuration via Exchange Admin Center (EAC)**
+1.  **Access EAC:** Open your browser and navigate to the Exchange Admin Center URL (e.g., `https://localhost/ecp`).
+2.  **Navigate:** Click on **Recipients** and then select the **Mailboxes** tab.
+3.  **Select Mailbox:** From the list, select the mailbox you want to assign permissions for and click the **Edit icon** (pencil).
+4.  **Delegation Tab:** On the mailbox property page, click on **Mailbox Delegation**.
+5.  **Add Delegate:**
+    *   Go to the **Send on Behalf** section and click the **plus icon (+)**.
+    *   Select the user or group you wish to grant permission to (e.g., `jay.sha`).
+    *   Click **Add**, then click **OK**.
+6.  **Save:** Click **Save** to apply the changes to the mailbox.
 
 ---
+
+### **III. Verification using Outlook on the Web (OWA)**
+To confirm the permission is working, the delegate must manually change the "From" field when composing an email.
+
+1.  **Login:** Access OWA (e.g., `https://mail.msftwebcast.com/owa`) using the **delegate's credentials**.
+2.  **Compose Mail:** Click **New** to start a new message.
+3.  **Show From Field:** Click the **three dots (...)** to open the more menu and select **Show From**.
+4.  **Change Sender:**
+    *   Right-click the delegate's default email address in the "From" field and remove it.
+    *   Type or search the directory for the **mailbox owner's email address** (e.g., `anant.panchal`).
+5.  **Send:** Complete the email and click **Send**.
+
+---
+
+### **IV. Confirming the Recipient View**
+When the recipient receives the email, they can verify the permission type:
+*   **Header Display:** The message will clearly state it was sent by **"[Delegate Name] on behalf of [Owner Name]"**.
+*   **Example:** "Jay Sha on behalf of Anand Panchal".
+
+---
+
+
