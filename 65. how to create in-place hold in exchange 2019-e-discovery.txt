@@ -61,3 +61,81 @@ Click Finish
 Get-Mailbox -Identity "mohamed ali" | fl *inplacehold*
 
 This configuration places selected mailbox content on hold to prevent deletion and supports legal and compliance requirements in Exchange 2019
+
+
+
+
+
+
+
+
+
+
+
+## In-Place Hold & eDiscovery in Exchange 2019
+
+---
+
+## What is In-Place Hold?
+
+It **freezes** a mailbox so emails cannot be deleted or modified, even by the user.
+
+```
+Normal mailbox = user can delete emails
+Mailbox on Hold = emails are preserved forever ✅
+```
+
+---
+
+## What is eDiscovery?
+
+It allows you to **search** through mailboxes to find specific emails for legal or compliance purposes.
+
+```
+Example:
+HR needs to find all emails between two employees
+Legal team needs emails from last year about a specific topic
+```
+
+---
+
+## When do you use them?
+
+```
+Legal investigation
+Employee misconduct
+Court order
+Compliance audit
+```
+
+---
+
+## How it works
+
+```
+1. Admin puts mailbox on Hold
+2. User cannot delete any email
+3. Admin searches mailbox using eDiscovery
+4. Admin exports results as evidence
+```
+
+---
+
+## Where to find it in Exchange
+
+```
+Exchange Admin Center
+> Compliance Management
+> In-Place eDiscovery & Hold
+> Click + to create new
+```
+
+---
+
+## Key points
+
+```
+Hold   = Preserve emails, prevent deletion
+Search = Find specific emails by keyword, date, sender
+Export = Download results for legal use
+```
