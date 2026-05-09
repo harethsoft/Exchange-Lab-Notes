@@ -58,7 +58,7 @@ Enter
 Click Finish
 
 
-Get-Mailbox -Identity "mohamed ali" | fl *inplacehold*
+Get-Mailbox -Identity "saleh" | fl *inplacehold*
 
 This configuration places selected mailbox content on hold to prevent deletion and supports legal and compliance requirements in Exchange 2019
 
