@@ -4,7 +4,7 @@ Using Exchange Management Shell
 
 First add an administrator to the Discovery Management role group
 
-Add-RoleGroupMember -Identity "Discovery Management" -Member ex_admin@harethsoft.com
+Add-RoleGroupMember -Identity "Discovery Management" -Member administrator@harethsoft.lan
 
 Verify the membership
 
