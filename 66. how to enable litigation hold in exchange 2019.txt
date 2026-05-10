@@ -35,3 +35,97 @@ Set-Mailbox -Identity "mohamed ali" -LitigationHoldEnabled $true -LitigationHold
 Verify Litigation Hold status
 
 Get-Mailbox -Identity "mohamed ali" | fl LitigationHold*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Litigation Hold in Exchange 2019
+
+---
+
+## What is Litigation Hold?
+
+It puts an **entire mailbox** on hold permanently. Every single email is preserved, even if the user deletes it.
+
+```
+User deletes email = email still saved in background ✅
+User empties trash = email still saved in background ✅
+```
+
+---
+
+## How to enable it
+
+```powershell
+Set-Mailbox -Identity "user" -LitigationHoldEnabled $true
+```
+
+Or from GUI:
+```
+Exchange Admin Center
+> Recipients
+> Mailboxes
+> Select user
+> Edit
+> Mailbox Features
+> Litigation Hold = Enable
+```
+
+---
+
+## What is the benefit?
+
+```
+Protects company from legal risk
+Preserves evidence for court cases
+Meets compliance requirements
+Prevents employees from hiding emails
+```
+
+---
+
+## Difference between Litigation Hold and In-Place Hold
+
+| | Litigation Hold | In-Place Hold |
+|---|---|---|
+| **Scope** | Entire mailbox | Specific emails only |
+| **Filter** | No filter, saves everything | Can filter by date, keyword, sender |
+| **Setup** | Simple, one click | More complex, needs search query |
+| **Best for** | Legal protection for whole mailbox | Targeted investigation |
+| **User aware** | Can notify user or not | Can notify user or not |
+
+---
+
+## Simple example
+
+```
+Litigation Hold = Freeze the entire house
+In-Place Hold   = Freeze only one specific room
+```
+
+---
+
+## When to use which?
+
+```
+Use Litigation Hold when:
+= Employee is being investigated
+= Company is in a lawsuit
+= You want full protection
+
+Use In-Place Hold when:
+= You need specific emails only
+= You want to search by keyword or date
+```
