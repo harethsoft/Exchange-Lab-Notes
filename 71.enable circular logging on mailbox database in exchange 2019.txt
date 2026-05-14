@@ -55,3 +55,107 @@ Verify circular logging status
 Get-MailboxDatabase db02 | fl CircularLoggingEnabled
 
 These steps show how to enable circular logging on a mailbox database in Exchange Server 2019 using both Exchange Admin Center and Exchange Management Shell
+
+
+
+
+## Circular Logging in Exchange 2019
+
+---
+
+## What is it?
+
+Circular Logging means Exchange **overwrites old log files** instead of keeping them forever.
+
+```
+Normal mode    = Log files keep growing forever
+Circular mode  = Old logs get deleted automatically
+```
+
+---
+
+## How it works
+
+```
+Normal Logging:
+E0200000001.log
+E0200000002.log
+E0200000003.log
+E0200000004.log  << keeps growing forever
+
+Circular Logging:
+E0200000001.log  << gets overwritten
+E0200000002.log  << gets overwritten
+E0200000003.log  << only keeps recent logs
+```
+
+---
+
+## Benefits
+
+```
+1. Saves disk space        = No log accumulation
+2. Less management         = No need to monitor log growth
+3. Good for test environments = Simple and easy
+```
+
+---
+
+## Disadvantages
+
+```
+1. Cannot do incremental backup  = Big problem in production
+2. Cannot replay logs for recovery = Data loss risk
+3. If database corrupts           = Cannot recover to specific point
+```
+
+---
+
+## When to enable it
+
+```
+Enable when:
+= Test or lab environment
+= Disk space is very limited
+= No backup strategy needed
+= Database is not critical
+
+Never enable when:
+= Production environment
+= You need point-in-time recovery
+= You have incremental backup strategy
+= Database contains important data
+```
+
+---
+
+## How to enable it
+
+**From PowerShell:**
+```powershell
+Set-MailboxDatabase "DB03" -CircularLoggingEnabled $true
+```
+
+**From EAC:**
+```
+Exchange Admin Center
+> Servers
+> Databases
+> Select DB03
+> Edit
+> Maintenance Tab
+> Check "Enable circular logging"
+> Save
+```
+
+---
+
+## Important Note
+
+```
+After enabling circular logging
+you must dismount and remount the database:
+
+Dismount-Database -Identity "DB03" -Confirm:$false
+Mount-Database -Identity "DB03"
+```
