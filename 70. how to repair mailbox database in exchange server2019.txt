@@ -60,5 +60,43 @@ After performing a repair, you must verify the database is now in a healthy stat
     *   Select your database, click the **three dots (...)**, and select **Mount**.
 4.  **Confirm Status:** The database status should now show as **Mounted**.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 1 - Mount DB03
+Mount-Database -Identity "DB03"
+
+Step 2 - Dismount WITHOUT proper shutdown (force dirty)
+Dismount-Database -Identity "DB03" -Confirm:$false
+
+Step 3 - Go to database folder
+cd G:\db03
+
+Step 4 - Delete the checkpoint file
+del E02.chk
+
+Step 5 - Delete some recent log files
+del E02000003F5.log
+del E02000003F6.log
+
+Step 6 - Check state
+cd "C:\Program Files\Microsoft\Exchange Server\V15\Bin"
+eseutil /mh G:\db03\db02.edb
+
+Expected result:
+State: Dirty Shutdown
+Log Required: 3F5 to 3F6
+
 ---
 
